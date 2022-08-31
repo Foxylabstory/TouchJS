@@ -1,0 +1,285 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Gauge Test</title>
+    <style>body {
+        padding: 0;
+        margin: 0;
+        background: #fff
+    }</style>
+</head>
+<body>
+
+<button onclick="animateGauges()">Animate</button>
+<button onclick="stopGaugesAnimation()">Stop animation</button>
+
+<hr>
+
+    <div style="position:absolute; top:0px; left:0px;">
+        <canvas id="gauge1" onclick="stopGaugesAnimation()"></canvas>
+    </div>
+    <div style="position:absolute; top:250px; left:0px;">    
+        <canvas id="gauge2" onclick="animateGauges()"></canvas>    
+    </div>
+    <div style="position:absolute; top:0px; left:250px;">            
+        <canvas id="gauge3" onclick="gotoLink()"></canvas>
+    </div>
+    <div style="position:absolute; top:0px; left:750px;">
+        <canvas id="gauge4"></canvas>    
+    </div>    
+    
+    <div style="position:absolute; top:250px; left:750px;">
+        <canvas id="gauge5"></canvas>  
+    </div>
+    <div style="position:absolute; top:500px; left:0px;">
+        <canvas id="gauge6"></canvas>  
+        <canvas id="gauge7"></canvas>    
+        <canvas id="gauge8"></canvas>  
+        <canvas id="gauge9"></canvas>
+        <canvas id="gauge10"></canvas>    
+        <canvas id="gauge11"></canvas>  
+        <canvas id="gauge12"></canvas>  
+    </div>
+<script>
+    
+var Par = {
+    Name : 'null',
+    height : 300,
+    width : 300,
+    ticks : ['0','100'],
+    units : 'unit/hour',
+    Val : 0,
+    Max : 0,
+    Min : 100,
+}    
+    
+function initScriptedGauges( obj ) {
+    new RadialGauge({
+        renderTo: obj.Name,
+        width: obj.width,
+        height: obj.height,
+        units: obj.units,
+        title: '',
+        value: obj.Val,
+        minValue: obj.Min,
+        maxValue: obj.Max,
+        majorTicks: obj.ticks,
+        minorTicks: 10,
+        strokeTicks: false,
+        highlights: [
+            { from: -15, to: 0, color: 'rgba(0,255,0,.15)' },
+            { from: -45, to: -30, color: 'rgba(255,255,0,.15)' },
+            { from: 100, to: 150, color: 'rgba(255,30,0,.25)' },
+            { from: 150, to: 200, color: 'rgba(255,0,225,.25)' },
+            { from: 200, to: 220, color: 'rgba(0,0,255,.25)' }
+        ],
+        colorPlate: '#222',
+        colorMajorTicks: '#f5f5f5',
+        colorMinorTicks: '#ddd',
+        colorTitle: '#fff',
+        colorUnits: '#ccc',
+        colorNumbers: '#eee',
+        colorNeedle: 'rgba(240, 128, 128, 1)',
+        colorNeedleEnd: 'rgba(255, 160, 122, .9)',
+        valueBox: true,
+        animationRule : 'linear',
+        animatedValue : false,
+        animationDuration: 200,
+        animation : false,
+        //glow : true
+    }).draw();
+}
+
+if (!Array.prototype.forEach) {
+    Array.prototype.forEach = function(cb) {
+        var i = 0, s = this.length;
+        for (; i < s; i++) {
+            cb && cb(this[i], i, this);
+        }
+    }
+}
+
+document.fonts && document.fonts.forEach(function(font) {
+    font.loaded.then(function() {
+        if (font.family.match(/Led/)) {
+            document.gauges.forEach(function(gauge) {
+                gauge.update();
+            });
+        }
+    });
+});
+
+var timers = [];
+var CountMode = 0;
+    
+function animateGauges() {
+    document.gauges.forEach(function(gauge) {
+        timers.push(setInterval(function() {
+            if( CountMode == 0 ) gauge.value += 0.1;
+            else gauge.value -= 0.1;
+            
+            if( gauge.value > 10) {
+                CountMode = 1;    
+            } 
+            if( gauge.value < -10 ) {
+                CountMode = 0;    
+            } 
+                /*
+                (gauge.options.maxValue - gauge.options.minValue) / 4 +
+                gauge.options.minValue / 4;
+                */
+        }, gauge.animation.duration = 200 ));
+    });
+}
+
+function stopGaugesAnimation() {
+    timers.forEach(function(timer) {
+        clearInterval(timer);
+    });
+}
+    
+function gotoLink() {
+    //stopGaugesAnimation();
+    document.location.href = "/examples/radial-component.html";
+}    
+function DrawGauges() {
+    Par.Name = 'gauge1';
+    Par.width = 250;
+    Par.height = Par.width;
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];
+    initScriptedGauges( Par );
+    
+    Par.Name = 'gauge2' 
+    Par.width = 250;
+    Par.height = Par.width;    
+    Par.ticks = ['-60','-45','-30','-15','0','15','30','45','60'];    
+    Par.Min = -60;
+    Par.Max = 60;
+    Par.Val = 0;   
+    initScriptedGauges( Par );
+    
+    Par.Name = 'gauge3'
+    Par.width = 500;
+    Par.height = Par.width;
+    Par.Min = -60;
+    Par.Max = 60;
+    Par.Val = 0;    
+    Par.ticks = ['-60','-45','-30','-15','0','15','30','45','60'];    
+    initScriptedGauges( Par );   
+    animateGauges();
+    
+    Par.Name = 'gauge4'
+    Par.width = 250;
+    Par.height = Par.width;
+    Par.units = 'М/сек.';     
+    Par.Min = -60;
+    Par.Max = 60;
+    Par.Val = 0;    
+    Par.ticks = ['-60','-45','-30','-15','0','15','30','45','60'];    
+    initScriptedGauges( Par );   
+    animateGauges();  
+
+    Par.Name = 'gauge5'
+    Par.width = 250;
+    Par.height = Par.width;
+    Par.units = 'Литр/мин.';        
+    Par.Min = -60;
+    Par.Max = 60;
+    Par.Val = 0;    
+    Par.ticks = ['-60','-45','-30','-15','0','15','30','45','60'];    
+    initScriptedGauges( Par );   
+    
+    Par.Name = 'gauge6'
+    Par.width = 250;
+    Par.height = 250;
+    Par.units = 'gauge6';    
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];  
+    
+    initScriptedGauges( Par );       
+    animateGauges();    
+
+    Par.Name = 'gauge7'
+    Par.width = 250;
+    Par.height = 250;
+    Par.units = 'gauge7';    
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];  
+    
+    initScriptedGauges( Par );       
+    animateGauges();    
+
+    Par.Name = 'gauge8'
+    Par.width = 250;
+    Par.height = 250;
+    Par.units = 'gauge8';    
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];  
+    
+    initScriptedGauges( Par );       
+    animateGauges();    
+
+    Par.Name = 'gauge9'
+    Par.width = 250;
+    Par.height = 250;
+    Par.units = 'gauge9';    
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];  
+    
+    initScriptedGauges( Par );       
+    animateGauges();    
+
+    Par.Name = 'gauge10'
+    Par.width = 250;
+    Par.height = 250;
+    Par.units = 'gauge10';    
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];  
+    
+    initScriptedGauges( Par );       
+    animateGauges();    
+
+    Par.Name = 'gauge11'
+    Par.width = 250;
+    Par.height = 250;
+    Par.units = 'gauge11';    
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];  
+    
+    initScriptedGauges( Par );       
+    animateGauges();    
+
+    Par.Name = 'gauge12'
+    Par.width = 250;
+    Par.height = 250;
+    Par.units = 'gauge12';    
+    Par.Min = -10;
+    Par.Max = 10;
+    Par.Val = 0;
+    Par.ticks = ['-10','-5','0','5','10'];  
+    
+    initScriptedGauges( Par );       
+    animateGauges();  
+}     
+    
+</script>
+
+<script async src="../gauge.min.js" onload="DrawGauges()"></script>
+</body>
+</html>
