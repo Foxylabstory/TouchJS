@@ -14,15 +14,26 @@
         <div class="ol header__buttons">
             <button class="header__drill">Drill</button>
             <button class="header__vern">Vernier</button>
+            <button class="header__animate">Animate</button>
         </div>
         <button class="header__button-burger header__button-burger_right"></button>
       </header>
       <section class="ol gauge-circle">
-        <div class="ol circle circle_left-top">lt</div>
-        <div class="ol circle circle_left-bottom">lb</div>
-        <div class="ol circle circle_centre">c</div>
-        <div class="ol circle circle_right-top">rt</div>
-        <div class="ol circle circle_right-bottom">rb</div>
+        <div class="ol circle circle_left-top">
+          <canvas id="circleGaugeLeftTop"></canvas>
+        </div>
+        <div class="ol circle circle_left-bottom">
+          <canvas id="circleGaugeLeftBottom"></canvas>
+        </div>
+        <div class="ol circle circle_centre">
+          <canvas id="circleGaugeCenter"></canvas>
+        </div>
+        <div class="ol circle circle_right-top">
+          <canvas id="circleGaugeRightTop"></canvas>
+        </div>
+        <div class="ol circle circle_right-bottom">
+          <canvas id="circleGaugeRightBottom"></canvas>
+        </div>
       </section>
     </div>
 
