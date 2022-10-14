@@ -5,13 +5,15 @@
 @import url('../blocks/header/header.css');
 @import url('../blocks/header/__button-burger/header__button-burger.css');
 
-@import url('../blocks/gauge-circle/gauge-circle.css');
+@import url('../blocks/circle-gauge/circle-gauge.css');
 @import url('../blocks/circle/circle.css');
 @import url('../blocks/circle/_type/circle_left-top.css');
 @import url('../blocks/circle/_type/circle_left-bottom.css');
 @import url('../blocks/circle/_type/circle_centre.css');
 @import url('../blocks/circle/_type/circle_right-top.css');
 @import url('../blocks/circle/_type/circle_right-bottom.css');
+
+@import url('../blocks/linear-gauge/linear-gauge.css');
 
 
 .ol {
