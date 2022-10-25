@@ -15,6 +15,12 @@
 
 @import url('../blocks/linear-gauge/linear-gauge.css');
 
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
+@import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__header/popup__header.css');
+@import url('../blocks/popup/__form-closer/popup__form-closer.css');
+@import url('../blocks/popup/__form-closer/_img/popup__form-closer_img.css');
 
 .ol {
     outline: 1px solid rgba(255, 255, 255, .25);

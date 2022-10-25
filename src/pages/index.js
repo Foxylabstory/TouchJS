@@ -121,11 +121,12 @@ const centerGauge = new RadialGauge({
     /* width: 200,
     height: 200, */
     units: "kN*m",
-    title: "Delay None",
-    value: "90",
+    title: "Delay 500",
+    value: "220",
     animateOnInit: "true",
     animatedValue: "true",
-    /* animationRule : 'linear', */
+    animationRule : 'linear',
+    animationDuration: 500,
     minValue: "0",
     maxValue: "220",
     majorTicks: ['0', '20', '40', '60', '80', '100', '120', '140', '160', '180', '200', '220'],
@@ -656,7 +657,7 @@ const linearGauge8 = new LinearGauge({
     colorBar: "rgba(255,255,255,.25)",
     strokeTicks: true,
     majorTicks: ['0', '50', '100', '150', '200', '250'],
-    minorTicks: '5',
+    minorTicks: '2',
     highlights: [
         { "from": 0, "to": 25, "color": "red" },
         { "from": 200, "to": 250, "color": "red" }
@@ -673,7 +674,7 @@ const linearGauge8 = new LinearGauge({
     needleSide: 'left',
     animationRule: 'linear',
     animatedValue: true,
-    animationDuration: 1000,
+    animationDuration: 2000,
     animation: true,
     // BoxBorderRadius: 0,
     // textShadow: 'false',
@@ -699,6 +700,6 @@ animateButton.addEventListener("click", function () {
             gauge.value = Math.random() *
                 (gauge.options.maxValue - gauge.options.minValue) +
                 gauge.options.minValue;
-        }, gauge.animation.duration + 50));
+        }, gauge.animation.duration + 500));
     });
 });

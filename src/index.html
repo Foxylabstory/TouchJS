@@ -3,21 +3,17 @@
   <head>
     <meta
       http-equiv="Content-Type"
-      content="text/html; charset=UTF-8"
-    />
+      content="text/html; charset=UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+      content="width=device-width, initial-scale=1.0" />
     <title>Touch</title>
     <link
       rel="stylesheet"
-      href="../src/pages/index.css"
-    />
+      href="../src/pages/index.css" />
     <script
       type="text/javascript"
-      src="./vendor/gauge.min.js"
-    ></script>
+      src="./vendor/gauge.min.js"></script>
   </head>
   <body class="page">
     <header class="header">
@@ -56,9 +52,143 @@
       <canvas id="linearGauge7"></canvas>
       <canvas id="linearGauge8"></canvas>
     </section>
+
+    <div class="popup popup_opened">
+      <div class="popup__container">
+        <h2 class="popup__header">Выберите и настройте параметр</h2>
+        <form
+          class="popup__form"
+          id="form"
+          name="popupForm"
+          autocomplete="on"
+          validate>
+          <fieldset class="popup__fieldset">
+            <label
+              class="popup__label"
+              for="name-param"
+              >Параметр</label
+            >
+            <select
+              id="name-params"
+              size="1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+            </select>
+            <label
+              class="popup__label"
+              for="name-units"
+              >Единицы измерения</label
+            >
+            <select
+              id="name-units"
+              size="1">
+              <option>кН</option>
+              <option>Тс</option>
+              <option>кгс</option>
+            </select>
+            <label
+              class="popup__label"
+              for="name-format"
+              >Единицы измерения</label
+            >
+            <select
+              id="name-format"
+              size="1">
+              <option>00.0</option>
+              <option>00.00</option>
+              <option>00.000</option>
+            </select>
+
+            <label
+              class="popup__label"
+              for="scale-max"
+              >Максимум шкалы</label
+            >
+            <input
+              class="popup__input"
+              id="scale-max"
+              name="scaleMax"
+              type="number"
+              placeholder="Максимум шкалы" />
+            <!-- <span
+              id="name-card-error"
+              class="popup__input-error"></span> -->
+
+            <label
+              class="popup__label"
+              for="param-max"
+              >Максимум параметра</label
+            >
+            <input
+              class="popup__input"
+              id="param-max"
+              name="paramMax"
+              type="number"
+              placeholder="Максимум параметра" />
+            <!-- <span
+              id="name-card-error"
+              class="popup__input-error"></span> -->
+
+            <label
+              class="popup__label"
+              for="param-min"
+              >Минимум шкалы</label
+            >
+            <input
+              class="popup__input"
+              id="param-min"
+              name="paramMin"
+              type="number"
+              placeholder="Минимум шкалы" />
+            <!-- <span
+              id="name-card-error"
+              class="popup__input-error"></span> -->
+
+            <label
+              class="popup__label"
+              for="scale-min"
+              >Минимум шкалы</label
+            >
+            <input
+              class="popup__input"
+              id="scale-min"
+              name="scaleMin"
+              type="number"
+              placeholder="Минимум шкалы" />
+            <!-- <span
+              id="name-card-error"
+              class="popup__input-error"></span> -->
+            <button
+              class="popup__button popup__button_type_disable"
+              type="submit">
+              Сохранить
+            </button>
+            <button
+              class="popup__button popup__button_type_disable"
+              type="submit">
+              Отменить
+            </button>
+            <button
+              class="popup__button popup__button_type_disable"
+              type="submit">
+              Клавиатура
+            </button>
+          </fieldset>
+        </form>
+        <button
+          class="popup__form-closer popup__form-closer_card"
+          id="card-closer"
+          type="button"
+          aria-label="Закрыть форму"></button>
+      </div>
+    </div>
     <script
       type="text/javascript"
-      src="../src/pages/index.js"
-    ></script>
+      src="../src/pages/index.js"></script>
   </body>
 </html>
