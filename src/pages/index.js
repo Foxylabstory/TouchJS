@@ -1,5 +1,4 @@
-/* import { RadialGauge, LinearGauge } from "../vendor/gauge.min.js"; */
-
+import "../pages/index.css";
 const animateButton = document.querySelector('.header__animate');
 
 const leftTopGauge = new RadialGauge({
