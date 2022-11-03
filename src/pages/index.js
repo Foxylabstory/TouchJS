@@ -4,20 +4,22 @@ import { linearGauge1, linearGauge2, linearGauge3, linearGauge4, linearGauge5, l
 
 const animateButton = document.querySelector('.header__animate');
 
-let setMinValue = 0;
-let setMaxValue = 2500;
-let minZone = 100;
-let maxZone = 900;
+let setMinValue = -100;
+let setMaxValue = 100;
+let minZone = 0;
+let maxZone = 100;
 
 centerGauge.options.minValue = setMinValue;
 centerGauge.options.maxValue = setMaxValue;
 centerGauge.value = '10';
-centerGauge.options.majorTicks = Array.from({ length: 11 }, function (value, index) {
-    // value будет undefined
-    return Math.round(index * (centerGauge.options.maxValue / 10))
-});
+const arr = [];
+for(let i = centerGauge.options.minValue; i <= centerGauge.options.maxValue; i = i + (centerGauge.options.maxValue + Math.abs(centerGauge.options.minValue)) / 10) {
+    arr.push(i);
+    console.log(arr);
+}
+centerGauge.options.majorTicks = arr;
 centerGauge.options.highlights = [
-    { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.25)" },
+    { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.65)" },
     { "from": maxZone, "to": setMaxValue, "color": "rgba(255,0,0,.75)" }
 ];
 centerGauge.draw();
@@ -30,7 +32,7 @@ rightBottomGauge.options.majorTicks = Array.from({ length: 11 }, function (value
 })
 rightBottomGauge.draw();
 
-console.log(rightBottomGauge.options);
+console.log(centerGauge.options);
 linearGauge1.draw();
 
 

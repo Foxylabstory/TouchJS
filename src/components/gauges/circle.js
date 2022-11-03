@@ -120,20 +120,20 @@ const centerGauge = new RadialGauge({
   height: 200, */
   units: "kN*m",
   title: "Delay 500",
-  value: "220",
+  /* value: "220", */
   animateOnInit: "true",
   animatedValue: "true",
   animationRule : 'linear',
   animationDuration: 500,
-  minValue: "0",
+  /* minValue: "0", */
   /* maxValue: "220", */
   /* majorTicks: ['0', '20', '40', '60', '80', '100', '120', '140', '160', '180', '200', '220'], */
   minorTicks: '5',
   strokeTicks: true,
-  highlights: [
+  /* highlights: [
       { "from": 0, "to": 50, "color": "rgba(255,0,0,.25)" },
       { "from": 160, "to": 220, "color": "rgba(255,0,0,.75)" }
-  ],
+  ], */
   colorPlate: "transparent",
   colorMajorTicks: "#f5f5f5",
   colorMinorTicks: "#ddd",
