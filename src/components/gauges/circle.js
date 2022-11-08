@@ -123,7 +123,7 @@ const centerGauge = new RadialGauge({
   /* value: "220", */
   animateOnInit: "true",
   animatedValue: "true",
-  animationRule : 'linear',
+  animationRule : 'quad',
   animationDuration: 500,
   /* minValue: "0", */
   /* maxValue: "220", */

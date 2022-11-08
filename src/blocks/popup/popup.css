@@ -11,4 +11,5 @@
   top: 0;
   left: 0;
   transition: visibility 0.4s linear 0s, opacity 0.4s linear;
+  color: black;
 }
