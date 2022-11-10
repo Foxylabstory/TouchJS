@@ -7,6 +7,7 @@ import 'simple-keyboard/build/css/index.css';
 import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
+const dataWindow = document.querySelector('.main');
 const animateButton = document.querySelector('.header__animate');
 const modalWindow = document.querySelector('.popup');
 const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
@@ -117,13 +118,28 @@ function handleShift() {
   });
 }
 
-// открытие попапа
-document.addEventListener('click', function (event) {
-  console.log(event.target.id);
+document.addEventListener('keydown', function (event) {
+  if (event.key === "Escape") {
+    closePopup();
+  }
+});
+
+const openPopup = (event) => {
   modalWindow.classList.add('popup_opened');
+  console.log(event.target);
+}
+
+const closePopup = () => {
+  modalWindow.classList.remove('popup_opened');
+}
+
+// открытие попапа
+dataWindow.addEventListener('click', function (event) {
+  openPopup(event);
+  if (event.target === modalWindow) {
+    closePopup();
+  }
 }, true);
 
 // закрытие попапа
-closeModalWindow.addEventListener('click', function (event) {
-  modalWindow.classList.remove('popup_opened');
-});
+closeModalWindow.addEventListener('click', closePopup);

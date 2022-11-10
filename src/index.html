@@ -25,174 +25,176 @@
       </div>
       <button class="header__button-burger header__button-burger_right"></button>
     </header>
-    <section class="circle-gauge">
-      <div class="circle circle_left-top">
-        <canvas id="circleGaugeLeftTop"></canvas>
-      </div>
-      <div class="circle circle_left-bottom">
-        <canvas id="circleGaugeLeftBottom"></canvas>
-      </div>
-      <div class="circle circle_centre">
-        <canvas id="circleGaugeCenter"></canvas>
-      </div>
-      <div class="circle circle_right-top">
-        <canvas id="circleGaugeRightTop"></canvas>
-      </div>
-      <div class="circle circle_right-bottom">
-        <canvas id="circleGaugeRightBottom"></canvas>
-      </div>
-    </section>
-    <section class="linear-gauge">
-      <canvas id="linearGauge1"></canvas>
-      <canvas id="linearGauge2"></canvas>
-      <canvas id="linearGauge3"></canvas>
-      <canvas id="linearGauge4"></canvas>
-      <canvas id="linearGauge5"></canvas>
-      <canvas id="linearGauge6"></canvas>
-      <canvas id="linearGauge7"></canvas>
-      <canvas id="linearGauge8"></canvas>
-    </section>
+    <div class="main">
+      <section class="circle-gauge">
+        <div class="circle circle_left-top">
+          <canvas id="circleGaugeLeftTop"></canvas>
+        </div>
+        <div class="circle circle_left-bottom">
+          <canvas id="circleGaugeLeftBottom"></canvas>
+        </div>
+        <div class="circle circle_centre">
+          <canvas id="circleGaugeCenter"></canvas>
+        </div>
+        <div class="circle circle_right-top">
+          <canvas id="circleGaugeRightTop"></canvas>
+        </div>
+        <div class="circle circle_right-bottom">
+          <canvas id="circleGaugeRightBottom"></canvas>
+        </div>
+      </section>
+      <section class="linear-gauge">
+        <canvas id="linearGauge1"></canvas>
+        <canvas id="linearGauge2"></canvas>
+        <canvas id="linearGauge3"></canvas>
+        <canvas id="linearGauge4"></canvas>
+        <canvas id="linearGauge5"></canvas>
+        <canvas id="linearGauge6"></canvas>
+        <canvas id="linearGauge7"></canvas>
+        <canvas id="linearGauge8"></canvas>
+      </section>
+      <div class="popup">
+        <div class="popup__container">
+          <h2 class="popup__header">Выберите и настройте параметр</h2>
+          <form
+            class="popup__form"
+            id="form"
+            name="popupForm"
+            autocomplete="on"
+            validate>
+            <fieldset class="popup__fieldset">
+              <div class="popup__group">
+                <label
+                  class="popup__label"
+                  for="name-param"
+                  >Параметр</label
+                >
+                <select
+                  id="name-params"
+                  size="1">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                </select>
+                <label
+                  class="popup__label"
+                  for="name-units"
+                  >Единицы измерения</label
+                >
+                <select
+                  id="name-units"
+                  size="1">
+                  <option>кН</option>
+                  <option>Тс</option>
+                  <option>кгс</option>
+                </select>
+                <label
+                  class="popup__label"
+                  for="name-format"
+                  >Формат отображения</label
+                >
+                <select
+                  id="name-format"
+                  size="1">
+                  <option>00.0</option>
+                  <option>00.00</option>
+                  <option>00.000</option>
+                </select>
+              </div>
+              <div class="popup__group">
+                <label
+                  class="popup__label"
+                  for="scale-max"
+                  >Максимум шкалы</label
+                >
+                <input
+                  class="popup__input"
+                  id="scale-max"
+                  name="scaleMax"
+                  type="number"
+                  placeholder="Максимум шкалы" />
+                <!-- <span
+                id="name-card-error"
+                class="popup__input-error"></span> -->
 
-    <div class="popup">
-      <div class="popup__container">
-        <h2 class="popup__header">Выберите и настройте параметр</h2>
-        <form
-          class="popup__form"
-          id="form"
-          name="popupForm"
-          autocomplete="on"
-          validate>
-          <fieldset class="popup__fieldset">
-            <div class="popup__group">
-              <label
-                class="popup__label"
-                for="name-param"
-                >Параметр</label
-              >
-              <select
-                id="name-params"
-                size="1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-              </select>
-              <label
-                class="popup__label"
-                for="name-units"
-                >Единицы измерения</label
-              >
-              <select
-                id="name-units"
-                size="1">
-                <option>кН</option>
-                <option>Тс</option>
-                <option>кгс</option>
-              </select>
-              <label
-                class="popup__label"
-                for="name-format"
-                >Формат отображения</label
-              >
-              <select
-                id="name-format"
-                size="1">
-                <option>00.0</option>
-                <option>00.00</option>
-                <option>00.000</option>
-              </select>
-            </div>
-            <div class="popup__group">
-              <label
-                class="popup__label"
-                for="scale-max"
-                >Максимум шкалы</label
-              >
-              <input
-                class="popup__input"
-                id="scale-max"
-                name="scaleMax"
-                type="number"
-                placeholder="Максимум шкалы" />
-              <!-- <span
-              id="name-card-error"
-              class="popup__input-error"></span> -->
+                <label
+                  class="popup__label"
+                  for="param-max"
+                  >Максимум параметра</label
+                >
+                <input
+                  class="popup__input"
+                  id="param-max"
+                  name="paramMax"
+                  type="number"
+                  placeholder="Максимум параметра" />
+                <!-- <span
+                id="name-card-error"
+                class="popup__input-error"></span> -->
 
-              <label
-                class="popup__label"
-                for="param-max"
-                >Максимум параметра</label
-              >
-              <input
-                class="popup__input"
-                id="param-max"
-                name="paramMax"
-                type="number"
-                placeholder="Максимум параметра" />
-              <!-- <span
-              id="name-card-error"
-              class="popup__input-error"></span> -->
+                <label
+                  class="popup__label"
+                  for="param-min"
+                  >Минимум параметра</label
+                >
+                <input
+                  class="popup__input"
+                  id="param-min"
+                  name="paramMin"
+                  type="number"
+                  placeholder="Минимум параметра" />
+                <!-- <span
+                id="name-card-error"
+                class="popup__input-error"></span> -->
 
-              <label
-                class="popup__label"
-                for="param-min"
-                >Минимум параметра</label
-              >
-              <input
-                class="popup__input"
-                id="param-min"
-                name="paramMin"
-                type="number"
-                placeholder="Минимум параметра" />
-              <!-- <span
-              id="name-card-error"
-              class="popup__input-error"></span> -->
-
-              <label
-                class="popup__label"
-                for="scale-min"
-                >Минимум шкалы</label
-              >
-              <input
-                class="popup__input"
-                id="scale-min"
-                name="scaleMin"
-                type="number"
-                placeholder="Минимум шкалы" />
-              <!-- <span
-              id="name-card-error"
-              class="popup__input-error"></span> -->
-            </div>
-            <div class="popup__group">
-            <button
-              class="popup__button popup__button_disable"
-              type="submit">
-              Сохранить
-            </button>
-            <button
-              class="popup__button popup__button_disable"
-              type="submit">
-              Отменить
-            </button>
-            <button
-              class="popup__button popup__button_disable"
-              type="submit">
-              Клавиатура
-            </button>
-          </div>
-          </fieldset>
-        </form>
-        <input class="input" />
-        <div class="popup__keyboard simple-keyboard"></div>
-        <button
-          class="popup__form-closer"
-          type="button"
-          aria-label="Закрыть форму"></button>
+                <label
+                  class="popup__label"
+                  for="scale-min"
+                  >Минимум шкалы</label
+                >
+                <input
+                  class="popup__input"
+                  id="scale-min"
+                  name="scaleMin"
+                  type="number"
+                  placeholder="Минимум шкалы" />
+                <!-- <span
+                id="name-card-error"
+                class="popup__input-error"></span> -->
+              </div>
+              <div class="popup__group">
+                <button
+                  class="popup__button popup__button_disable"
+                  type="submit">
+                  Сохранить
+                </button>
+                <button
+                  class="popup__button popup__button_disable"
+                  type="submit">
+                  Отменить
+                </button>
+                <button
+                  class="popup__button popup__button_disable"
+                  type="submit">
+                  Клавиатура
+                </button>
+              </div>
+            </fieldset>
+          </form>
+          <input class="input" />
+          <div class="popup__keyboard simple-keyboard"></div>
+          <button
+            class="popup__form-closer"
+            type="button"
+            aria-label="Закрыть форму"></button>
+        </div>
       </div>
     </div>
+
     <!-- <script
       type="text/javascript"
       src="../src/pages/index.js"></script> -->
