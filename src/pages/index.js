@@ -16,8 +16,8 @@ const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
 const saveButton = modalWindow.querySelector('#submit');
 
 // перенести установку значений в логику работы модального окна
-
-/* let setMinValue = -1000;
+/*
+let setMinValue = -1000;
 let setMaxValue = 5000;
 let minZone = 0;
 let maxZone = 4000;
@@ -33,8 +33,8 @@ centerGauge.options.majorTicks = arr;
 centerGauge.options.highlights = [
   { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.65)" },
   { "from": maxZone, "to": setMaxValue, "color": "rgba(255,0,0,.75)" }
-]; */
-/* centerGauge.draw(); */
+];
+ centerGauge.draw(); */
 
 /* rightBottomGauge.options.maxValue = '440'
 rightBottomGauge.value = '100';
@@ -168,19 +168,26 @@ saveButton.addEventListener('click', function (event) {
   if (nameOfGauge === 'circleGaugeCenter') {
     console.log(`match`, centerGauge.options);
     console.log(`submit`, newData);
-    centerGauge.options.minValue = newData.scaleMin;
-    centerGauge.options.maxValue = newData.scaleMax;
+
+    let setMinValue =  parseInt(newData.scaleMin);
+    let setMaxValue = parseInt(newData.scaleMax);
+    let minZone = parseInt(newData.paramMin);
+    let maxZone = parseInt(newData.paramMax);
+    
+    centerGauge.options.minValue = setMinValue;
+    centerGauge.options.maxValue = setMaxValue;
+    centerGauge.value = '990';
     const arr = [];
     for (let i = centerGauge.options.minValue; i <= centerGauge.options.maxValue; i = i + (centerGauge.options.maxValue + Math.abs(centerGauge.options.minValue)) / 10) {
       arr.push(i);
     }
+    console.log(arr);
     centerGauge.options.majorTicks = arr;
     centerGauge.options.highlights = [
-      { "from": centerGauge.options.minValue, "to": newData.paramMin, "color": "rgba(255,0,0,.65)" },
-      { "from": newData.paramMax, "to": centerGauge.options.maxValue, "color": "rgba(255,0,0,.75)" }
+      { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.65)" },
+      { "from": maxZone, "to": setMaxValue, "color": "rgba(255,0,0,.75)" }
     ];
-    centerGauge.draw();
-    
+    centerGauge.update();
   };
   closePopup();
 })
