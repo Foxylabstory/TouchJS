@@ -7,14 +7,17 @@ import 'simple-keyboard/build/css/index.css';
 import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
+let nameOfGauge = '';
 const dataWindow = document.querySelector('.main');
+const gaugeList = document.querySelectorAll('.gauge');
 const animateButton = document.querySelector('.header__animate');
 const modalWindow = document.querySelector('.popup');
 const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
+const saveButton = modalWindow.querySelector('#submit');
 
 // перенести установку значений в логику работы модального окна
 
-let setMinValue = -1000;
+/* let setMinValue = -1000;
 let setMaxValue = 5000;
 let minZone = 0;
 let maxZone = 4000;
@@ -30,10 +33,10 @@ centerGauge.options.majorTicks = arr;
 centerGauge.options.highlights = [
   { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.65)" },
   { "from": maxZone, "to": setMaxValue, "color": "rgba(255,0,0,.75)" }
-];
-centerGauge.draw();
+]; */
+/* centerGauge.draw(); */
 
-rightBottomGauge.options.maxValue = '440'
+/* rightBottomGauge.options.maxValue = '440'
 rightBottomGauge.value = '100';
 rightBottomGauge.options.majorTicks = Array.from({ length: 11 }, function (value, index) {
   // value будет undefined
@@ -42,7 +45,7 @@ rightBottomGauge.options.majorTicks = Array.from({ length: 11 }, function (value
 rightBottomGauge.draw();
 
 console.log(centerGauge.options);
-linearGauge1.draw();
+linearGauge1.draw(); */
 
 // запуск генерации рандомных значений для индикаторов
 let timers = [];
@@ -134,12 +137,50 @@ const closePopup = () => {
 }
 
 // открытие попапа
-dataWindow.addEventListener('click', function (event) {
-  openPopup(event);
-  if (event.target === modalWindow) {
-    closePopup();
-  }
-}, true);
+gaugeList.forEach((gauge) => {
+  gauge.addEventListener('click', function (event) {
+    openPopup(event);
+    nameOfGauge = event.target.id;
+    console.log(nameOfGauge);
+    if (event.target === modalWindow) {
+      closePopup();
+    };
+  }, true);
+});
 
 // закрытие попапа
 closeModalWindow.addEventListener('click', closePopup);
+
+saveButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  const newData = {};
+  const selectValues = modalWindow.querySelectorAll('.popup__select');
+  const inputValues = modalWindow.querySelectorAll('.popup__input');
+  console.log(`elements`, selectValues);
+  console.log(`elements`, inputValues);
+  selectValues.forEach((select) => {
+    newData[select.name] = select.value;
+  });
+  inputValues.forEach((input) => {
+    newData[input.name] = input.value;
+  });
+  console.log(nameOfGauge);
+  if (nameOfGauge === 'circleGaugeCenter') {
+    console.log(`match`, centerGauge.options);
+    console.log(`submit`, newData);
+    centerGauge.options.minValue = newData.scaleMin;
+    centerGauge.options.maxValue = newData.scaleMax;
+    const arr = [];
+    for (let i = centerGauge.options.minValue; i <= centerGauge.options.maxValue; i = i + (centerGauge.options.maxValue + Math.abs(centerGauge.options.minValue)) / 10) {
+      arr.push(i);
+    }
+    centerGauge.options.majorTicks = arr;
+    centerGauge.options.highlights = [
+      { "from": centerGauge.options.minValue, "to": newData.paramMin, "color": "rgba(255,0,0,.65)" },
+      { "from": newData.paramMax, "to": centerGauge.options.maxValue, "color": "rgba(255,0,0,.75)" }
+    ];
+    centerGauge.draw();
+    
+  };
+  closePopup();
+})

@@ -26,39 +26,43 @@
       <button class="header__button-burger header__button-burger_right"></button>
     </header>
     <div class="main">
-      <section class="circle-gauge">
-        <div class="circle circle_left-top">
+      <section class="circles">
+        <div class="gauge circles__circle circles__circle_left-top">
           <canvas id="circleGaugeLeftTop"></canvas>
         </div>
-        <div class="circle circle_left-bottom">
+        <div class="gauge circles__circle circles__circle_left-bottom">
           <canvas id="circleGaugeLeftBottom"></canvas>
         </div>
-        <div class="circle circle_centre">
+        <div class="gauge circles__circle circles__circle_centre">
           <canvas id="circleGaugeCenter"></canvas>
         </div>
-        <div class="circle circle_right-top">
+        <div class="gauge circles__circle circles__circle_right-top">
           <canvas id="circleGaugeRightTop"></canvas>
         </div>
-        <div class="circle circle_right-bottom">
+        <div class="gauge circles__circle circles__circle_right-bottom">
           <canvas id="circleGaugeRightBottom"></canvas>
         </div>
       </section>
-      <section class="linear-gauge">
-        <canvas id="linearGauge1"></canvas>
-        <canvas id="linearGauge2"></canvas>
-        <canvas id="linearGauge3"></canvas>
-        <canvas id="linearGauge4"></canvas>
-        <canvas id="linearGauge5"></canvas>
-        <canvas id="linearGauge6"></canvas>
-        <canvas id="linearGauge7"></canvas>
-        <canvas id="linearGauge8"></canvas>
+      <section class="linears">
+        <div class="gauge linears__lenear">
+          <canvas id="linearGauge1"></canvas>
+        </div>
+        <div class="gauge linears__lenear">
+          <canvas id="linearGauge2"></canvas>
+        </div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge3"></canvas></div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge4"></canvas></div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge5"></canvas></div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge6"></canvas></div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge7"></canvas></div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge8"></canvas></div>
       </section>
       <div class="popup">
         <div class="popup__container">
           <h2 class="popup__header">Выберите и настройте параметр</h2>
           <form
             class="popup__form"
-            id="form"
+            id="setParam"
             name="popupForm"
             autocomplete="on"
             validate>
@@ -70,6 +74,8 @@
                   >Параметр</label
                 >
                 <select
+                  class="popup__select"
+                  name="nameParams"
                   id="name-params"
                   size="1">
                   <option>1</option>
@@ -86,6 +92,8 @@
                   >Единицы измерения</label
                 >
                 <select
+                  class="popup__select"
+                  name="nameUnits"
                   id="name-units"
                   size="1">
                   <option>кН</option>
@@ -98,6 +106,8 @@
                   >Формат отображения</label
                 >
                 <select
+                  class="popup__select"
+                  name="nameFormat"
                   id="name-format"
                   size="1">
                   <option>00.0</option>
@@ -168,18 +178,21 @@
               </div>
               <div class="popup__group">
                 <button
+                  id="submit"
                   class="popup__button popup__button_disable"
                   type="submit">
                   Сохранить
                 </button>
                 <button
+                  id="reset"
                   class="popup__button popup__button_disable"
-                  type="submit">
+                  type="reset">
                   Отменить
                 </button>
                 <button
+                  id="keyboard"
                   class="popup__button popup__button_disable"
-                  type="submit">
+                  type="button">
                   Клавиатура
                 </button>
               </div>

@@ -5,15 +5,15 @@
 @import url('../blocks/header/header.css');
 @import url('../blocks/header/__button-burger/header__button-burger.css');
 
-@import url('../blocks/circle-gauge/circle-gauge.css');
-@import url('../blocks/circle/circle.css');
-@import url('../blocks/circle/_type/circle_left-top.css');
-@import url('../blocks/circle/_type/circle_left-bottom.css');
-@import url('../blocks/circle/_type/circle_centre.css');
-@import url('../blocks/circle/_type/circle_right-top.css');
-@import url('../blocks/circle/_type/circle_right-bottom.css');
+@import url('../blocks/circles/circles.css');
+@import url('../blocks/circles/__circle/circles__circle.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_left-top.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_left-bottom.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_centre.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_right-top.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_right-bottom.css');
 
-@import url('../blocks/linear-gauge/linear-gauge.css');
+@import url('../blocks/linears/linears.css');
 
 @import url('../blocks/popup/popup.css');
 @import url('../blocks/popup/_opened/popup_opened.css');

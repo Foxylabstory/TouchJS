@@ -162,7 +162,7 @@ const centerGauge = new RadialGauge({
   colorValueBoxBackground: "transparent",
   colorValueText: "#fff",
   fontValueSize: 50,
-});
+}).draw();
 
 const rightTopGauge = new RadialGauge({
   renderTo: 'circleGaugeRightTop',
@@ -268,6 +268,6 @@ const rightBottomGauge = new RadialGauge({
   colorValueBoxBackground: "transparent",
   colorValueText: "#fff",
   fontValueSize: 50,
-});
+}).draw();
 
 export { leftTopGauge, leftBottomGauge, centerGauge, rightTopGauge, rightBottomGauge }

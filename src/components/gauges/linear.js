@@ -50,7 +50,7 @@ const linearGauge1 = new LinearGauge({
   colorValueBoxRectEnd: "transparent",
   colorValueBoxBackground: "transparent",
   colorValueText: "#fff",
-});
+}).draw();
 
 const linearGauge2 = new LinearGauge({
   renderTo: 'linearGauge2',
