@@ -1,5 +1,5 @@
 import "../pages/index.css";
-import { leftTopGauge, leftBottomGauge, centerGauge, rightTopGauge, rightBottomGauge } from '../components/gauges/circle';
+import { leftTopGauge, leftBottomGauge, circleGaugeCenter, rightTopGauge, rightBottomGauge } from '../components/gauges/circle';
 import { linearGauge1, linearGauge2, linearGauge3, linearGauge4, linearGauge5, linearGauge6, linearGauge7, linearGauge8 } from '../components/gauges/linear';
 
 import Keyboard from 'simple-keyboard';
@@ -7,7 +7,7 @@ import 'simple-keyboard/build/css/index.css';
 import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
-let nameOfGauge = '';
+let nameOfGauge;
 const dataWindow = document.querySelector('.main');
 const gaugeList = document.querySelectorAll('.gauge');
 const animateButton = document.querySelector('.header__animate');
@@ -142,52 +142,78 @@ gaugeList.forEach((gauge) => {
     openPopup(event);
     nameOfGauge = event.target.id;
     console.log(nameOfGauge);
-    if (event.target === modalWindow) {
-      closePopup();
-    };
+
   }, true);
 });
 
 // закрытие попапа
 closeModalWindow.addEventListener('click', closePopup);
 
+// закрытие попапа по оверлею
+document.addEventListener('click', function (event) {
+  if (event.target === modalWindow) {
+    closePopup();
+  };
+});
+
+// обновление параметров
+function handleUpdate(gauge, newData) {
+console.log(gauge);
+
+  const setMinValue = parseInt(newData.scaleMin);
+  const setMaxValue = parseInt(newData.scaleMax);
+  const minZone = parseInt(newData.paramMin);
+  const maxZone = parseInt(newData.paramMax);
+
+  gauge.options.minValue = setMinValue;
+  gauge.options.maxValue = setMaxValue;
+
+  const arr = [];
+  for (let i = gauge.options.minValue; i <= gauge.options.maxValue; i = i + (gauge.options.maxValue + Math.abs(gauge.options.minValue)) / 10) {
+    arr.push(i);
+  }
+  console.log(arr);
+  gauge.options.majorTicks = arr;
+  gauge.options.highlights = [
+    { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.65)" },
+    { "from": maxZone, "to": setMaxValue, "color": "rgba(255,0,0,.75)" }
+  ];
+
+  if (newData.format === '0.0') {
+    gauge.options.valueDec = 1
+  } else if (newData.format === '0.00') {
+    gauge.options.valueDec = 2
+  } else if (newData.format === '0.000') {
+    gauge.options.valueDec = 3
+  };
+
+  gauge.options.title = newData.params;
+  gauge.options.units = newData.units;
+
+  gauge.update();
+}
+
 saveButton.addEventListener('click', function (event) {
   event.preventDefault();
   const newData = {};
-  const selectValues = modalWindow.querySelectorAll('.popup__select');
-  const inputValues = modalWindow.querySelectorAll('.popup__input');
-  console.log(`elements`, selectValues);
-  console.log(`elements`, inputValues);
-  selectValues.forEach((select) => {
-    newData[select.name] = select.value;
-  });
-  inputValues.forEach((input) => {
-    newData[input.name] = input.value;
-  });
-  console.log(nameOfGauge);
-  if (nameOfGauge === 'circleGaugeCenter') {
-    console.log(`match`, centerGauge.options);
-    console.log(`submit`, newData);
+  const values = modalWindow.querySelectorAll('.popup__data');
 
-    let setMinValue =  parseInt(newData.scaleMin);
-    let setMaxValue = parseInt(newData.scaleMax);
-    let minZone = parseInt(newData.paramMin);
-    let maxZone = parseInt(newData.paramMax);
-    
-    centerGauge.options.minValue = setMinValue;
-    centerGauge.options.maxValue = setMaxValue;
-    centerGauge.value = '990';
-    const arr = [];
-    for (let i = centerGauge.options.minValue; i <= centerGauge.options.maxValue; i = i + (centerGauge.options.maxValue + Math.abs(centerGauge.options.minValue)) / 10) {
-      arr.push(i);
-    }
-    console.log(arr);
-    centerGauge.options.majorTicks = arr;
-    centerGauge.options.highlights = [
-      { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.65)" },
-      { "from": maxZone, "to": setMaxValue, "color": "rgba(255,0,0,.75)" }
-    ];
-    centerGauge.update();
+  console.log(`elements`, values);
+  values.forEach((data) => {
+    newData[data.name] = data.value;
+  });
+  console.log(newData);
+  if (nameOfGauge === 'circleGaugeLeftTop') {
+    handleUpdate(leftTopGauge, newData);
+  } else if (nameOfGauge === 'circleGaugeLeftBottom') {
+    handleUpdate(leftBottomGauge, newData);
+  } else if (nameOfGauge === 'circleGaugeCenter') {
+    handleUpdate(circleGaugeCenter, newData);
+  } else if (nameOfGauge === 'circleGaugeRightTop') {
+    handleUpdate(rightTopGauge, newData);
+  } else if (nameOfGauge === 'circleGaugeRightBottom') {
+    handleUpdate(rightBottomGauge, newData);
   };
+  /* handleUpdate(nameOfGauge, newData); */
   closePopup();
 })

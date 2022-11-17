@@ -44,12 +44,8 @@
         </div>
       </section>
       <section class="linears">
-        <div class="gauge linears__lenear">
-          <canvas id="linearGauge1"></canvas>
-        </div>
-        <div class="gauge linears__lenear">
-          <canvas id="linearGauge2"></canvas>
-        </div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge1"></canvas></div>
+        <div class="gauge linears__lenear"><canvas id="linearGauge2"></canvas></div>
         <div class="gauge linears__lenear"><canvas id="linearGauge3"></canvas></div>
         <div class="gauge linears__lenear"><canvas id="linearGauge4"></canvas></div>
         <div class="gauge linears__lenear"><canvas id="linearGauge5"></canvas></div>
@@ -70,13 +66,13 @@
               <div class="popup__group">
                 <label
                   class="popup__label"
-                  for="name-param"
+                  for="param"
                   >Параметр</label
                 >
                 <select
-                  class="popup__select"
-                  name="nameParams"
-                  id="name-params"
+                  class="popup__select popup__data"
+                  name="params"
+                  id="params"
                   size="1">
                   <option>1</option>
                   <option>2</option>
@@ -88,13 +84,13 @@
                 </select>
                 <label
                   class="popup__label"
-                  for="name-units"
+                  for="units"
                   >Единицы измерения</label
                 >
                 <select
-                  class="popup__select"
-                  name="nameUnits"
-                  id="name-units"
+                  class="popup__select popup__data"
+                  name="units"
+                  id="units"
                   size="1">
                   <option>кН</option>
                   <option>Тс</option>
@@ -102,17 +98,17 @@
                 </select>
                 <label
                   class="popup__label"
-                  for="name-format"
+                  for="format"
                   >Формат отображения</label
                 >
                 <select
-                  class="popup__select"
-                  name="nameFormat"
-                  id="name-format"
+                  class="popup__select popup__data"
+                  name="format"
+                  id="format"
                   size="1">
-                  <option>00.0</option>
-                  <option>00.00</option>
-                  <option>00.000</option>
+                  <option>0.0</option>
+                  <option>0.00</option>
+                  <option>0.000</option>
                 </select>
               </div>
               <div class="popup__group">
@@ -122,7 +118,7 @@
                   >Максимум шкалы</label
                 >
                 <input
-                  class="popup__input"
+                  class="popup__input popup__data"
                   id="scale-max"
                   name="scaleMax"
                   type="number"
@@ -137,7 +133,7 @@
                   >Максимум параметра</label
                 >
                 <input
-                  class="popup__input"
+                  class="popup__input popup__data"
                   id="param-max"
                   name="paramMax"
                   type="number"
@@ -152,7 +148,7 @@
                   >Минимум параметра</label
                 >
                 <input
-                  class="popup__input"
+                  class="popup__input popup__data"
                   id="param-min"
                   name="paramMin"
                   type="number"
@@ -167,7 +163,7 @@
                   >Минимум шкалы</label
                 >
                 <input
-                  class="popup__input"
+                  class="popup__input popup__data"
                   id="scale-min"
                   name="scaleMin"
                   type="number"
