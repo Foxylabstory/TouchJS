@@ -5,7 +5,6 @@ const linearParametres = {
   valueDec: 1,
   width: 125,
   height: 260,
-  value: 100,
   minValue: 0,
   maxValue: 250,
   units: "Уровень, л/с",

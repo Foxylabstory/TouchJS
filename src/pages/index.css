@@ -24,6 +24,12 @@
 @import url('../blocks/popup/__form-closer/popup__form-closer.css');
 @import url('../blocks/popup/__form-closer/_img/popup__form-closer_img.css');
 
+@import url('../blocks/popup/__keyboard/popup__keyboard.css');
+@import url('../blocks/popup/__keyboard/_opened/popup__keyboard_opened.css');
+@import url('../blocks/popup/__keyboard/_visible/popup__keyboard_visible.css');
+
+@import url('../blocks/keyboard/hg-button/_lang/hg-button_lang.css');
+
 .ol {
     outline: 1px solid rgba(255, 255, 255, .25);
 }
