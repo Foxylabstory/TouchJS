@@ -3,7 +3,16 @@
 
 @import url('../blocks/page.css');
 @import url('../blocks/header/header.css');
-@import url('../blocks/header/__button-burger/header__button-burger.css');
+@import url('../blocks/header/__buttons/header__buttons.css');
+@import url('../blocks/header/__button/header__button.css');
+@import url('../blocks/header/__button/_small/header__button_small.css');
+@import url('../blocks/header/__button/_animate/header__button_animate.css');
+@import url('../blocks/header/__button/_burger/header__button_burger');
+@import url('../blocks/header/__button/_burger-left/header__button_burger-left.css');
+@import url('../blocks/header/__button/_active/header__button_active.css');
+@import url('../blocks/header/__button/_bright/header__button_bright.css');
+@import url('../blocks/header/__button/_unlock/header__button_unlock.css');
+@import url('../blocks/header/__button/_lock/header__button_lock.css');
 
 @import url('../blocks/circles/circles.css');
 @import url('../blocks/circles/__circle/circles__circle.css');

@@ -9,7 +9,7 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 
 let nameOfGauge;
 const gaugeList = document.querySelectorAll('.gauge');
-const animateButton = document.querySelector('.header__animate');
+const animateButton = document.querySelector('.header__button_animate');
 const modalWindow = document.querySelector('.popup');
 const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
 const saveButton = modalWindow.querySelector('#submit');

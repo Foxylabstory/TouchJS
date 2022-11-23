@@ -17,14 +17,29 @@
   </head>
   <body class="page">
     <header class="header">
-      <button class="header__button-burger header__button-burger_left"></button>
+      <button class="header__button header__button_small header__button_burger header__button_burger-left"></button>
       <div class="header__buttons">
-        <button class="header__drill">Drill</button>
-        <button class="header__vern">Vernier</button>
-        <button class="header__animate">Animate</button>
+        <button class="header__button header__button_code header__button_active" aria-label="Код работ">Код работ</button>
+        <button class="header__button header__button_link" aria-label="Обнулить тальблок">Обнулить тальблок</button>
+        <button class="header__button header__button_bit" aria-label="Положение долота">Положение долота</button>
+        <button class="header__button header__button_hole" aria-label="Глубина забоя">Глубина забоя</button>
+        <button class="header__button header__button_drill" aria-label="Бурение вкл/откл">Бурение вкл/откл</button>
+        <button class="header__button header__button_vern" aria-label="Верньер вкл/откл">Верньер вкл/откл</button>
+        <button class="header__button header__button_small header__button_bright" aria-label="Яркость"></button>
+        <button class="header__button header__button_small header__button_unlock header__button_lock" aria-label="Блокировка"></button>
+        <button class="header__button header__button_small header__button_animate" aria-label="Animate">Animate</button>
       </div>
-      <button class="header__button-burger header__button-burger_right"></button>
+      <button class="header__button header__button_small header__button_burger header__button_burger-right"></button>
     </header>
+    <nav class="nav">
+      <ul>
+        <li>Параметры привязки</li>
+        <li>Рабочие параметры</li>
+        <li>Обнуление параметров</li>
+        <li>Системные параметры</li>
+        <li>Параметры подключения</li>
+      </ul>
+    </nav>
     <div class="main">
       <section class="circles">
         <div class="gauge circles__circle circles__circle_left-top">
