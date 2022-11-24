@@ -9,6 +9,8 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 
 let nameOfGauge;
 const gaugeList = document.querySelectorAll('.gauge');
+const rightMenuButton = document.querySelector('.header__button_burger-right');
+const rightMenu = document.querySelector('.nav');
 const animateButton = document.querySelector('.header__button_animate');
 const modalWindow = document.querySelector('.popup');
 const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
@@ -16,9 +18,15 @@ const saveButton = modalWindow.querySelector('#submit');
 const keyboardButton = modalWindow.querySelector('#keyboard');
 const keyboardDiv = modalWindow.querySelector('.popup__keyboard');
 
+rightMenuButton.addEventListener('click', function (params) {
+  rightMenu.classList.toggle('nav_opened');
+  rightMenuButton.classList.toggle('header__button_active');
+})
+
 // запуск генерации рандомных значений для индикаторов
 let timers = [];
 animateButton.addEventListener("click", function () {
+  animateButton.classList.add('header__button_active');
   document.gauges.forEach(function (gauge) {
     timers.push(setInterval(function () {
       gauge.value = Math.random() *

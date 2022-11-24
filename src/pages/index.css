@@ -14,6 +14,12 @@
 @import url('../blocks/header/__button/_unlock/header__button_unlock.css');
 @import url('../blocks/header/__button/_lock/header__button_lock.css');
 
+@import url('../blocks/nav/nav.css');
+@import url('../blocks/nav/_opened/nav_opened.css');
+@import url('../blocks/nav/__list/nav__list.css');
+@import url('../blocks/nav/__item/nav__item.css');
+@import url('../blocks/nav/__link/nav__link.css');
+
 @import url('../blocks/circles/circles.css');
 @import url('../blocks/circles/__circle/circles__circle.css');
 @import url('../blocks/circles/__circle/_type/circles__circle_left-top.css');
