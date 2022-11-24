@@ -16,6 +16,7 @@
 
 @import url('../blocks/nav/nav.css');
 @import url('../blocks/nav/_opened/nav_opened.css');
+@import url('../blocks/nav/_right/nav_right.css');
 @import url('../blocks/nav/__list/nav__list.css');
 @import url('../blocks/nav/__item/nav__item.css');
 @import url('../blocks/nav/__link/nav__link.css');

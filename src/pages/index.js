@@ -9,14 +9,21 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 
 let nameOfGauge;
 const gaugeList = document.querySelectorAll('.gauge');
+const leftMenuButton = document.querySelector('.header__button_burger-left');
+const leftMenu = document.querySelector('.nav_left');
 const rightMenuButton = document.querySelector('.header__button_burger-right');
-const rightMenu = document.querySelector('.nav');
+const rightMenu = document.querySelector('.nav_right');
 const animateButton = document.querySelector('.header__button_animate');
 const modalWindow = document.querySelector('.popup');
 const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
 const saveButton = modalWindow.querySelector('#submit');
 const keyboardButton = modalWindow.querySelector('#keyboard');
 const keyboardDiv = modalWindow.querySelector('.popup__keyboard');
+
+leftMenuButton.addEventListener('click', function (params) {
+  leftMenu.classList.toggle('nav_opened');
+  leftMenuButton.classList.toggle('header__button_active');
+})
 
 rightMenuButton.addEventListener('click', function (params) {
   rightMenu.classList.toggle('nav_opened');
