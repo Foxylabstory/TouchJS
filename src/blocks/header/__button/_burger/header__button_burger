@@ -1,0 +1,5 @@
+.header__button_burger {
+  background-image: url('../../../../images/header/BurgerMenu.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}

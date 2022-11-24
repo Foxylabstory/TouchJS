@@ -1,0 +1,50 @@
+@import url('../vendor/normalize.css');
+@import url('../vendor/fonts/fonts.css');
+
+@import url('../blocks/page.css');
+@import url('../blocks/header/header.css');
+@import url('../blocks/header/__buttons/header__buttons.css');
+@import url('../blocks/header/__button/header__button.css');
+@import url('../blocks/header/__button/_small/header__button_small.css');
+@import url('../blocks/header/__button/_animate/header__button_animate.css');
+@import url('../blocks/header/__button/_burger/header__button_burger');
+@import url('../blocks/header/__button/_burger-left/header__button_burger-left.css');
+@import url('../blocks/header/__button/_active/header__button_active.css');
+@import url('../blocks/header/__button/_bright/header__button_bright.css');
+@import url('../blocks/header/__button/_unlock/header__button_unlock.css');
+@import url('../blocks/header/__button/_lock/header__button_lock.css');
+
+@import url('../blocks/nav/nav.css');
+@import url('../blocks/nav/_opened/nav_opened.css');
+@import url('../blocks/nav/__list/nav__list.css');
+@import url('../blocks/nav/__item/nav__item.css');
+@import url('../blocks/nav/__link/nav__link.css');
+
+@import url('../blocks/circles/circles.css');
+@import url('../blocks/circles/__circle/circles__circle.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_left-top.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_left-bottom.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_centre.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_right-top.css');
+@import url('../blocks/circles/__circle/_type/circles__circle_right-bottom.css');
+
+@import url('../blocks/linears/linears.css');
+
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
+@import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__header/popup__header.css');
+@import url('../blocks/popup/__fieldset/popup__fieldset.css');
+@import url('../blocks/popup/__group/popup__group.css');
+@import url('../blocks/popup/__form-closer/popup__form-closer.css');
+@import url('../blocks/popup/__form-closer/_img/popup__form-closer_img.css');
+
+@import url('../blocks/popup/__keyboard/popup__keyboard.css');
+@import url('../blocks/popup/__keyboard/_opened/popup__keyboard_opened.css');
+@import url('../blocks/popup/__keyboard/_visible/popup__keyboard_visible.css');
+
+@import url('../blocks/keyboard/hg-button/_lang/hg-button_lang.css');
+
+.ol {
+    outline: 1px solid rgba(255, 255, 255, .25);
+}

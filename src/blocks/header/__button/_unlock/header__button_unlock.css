@@ -1,0 +1,6 @@
+.header__button_unlock {
+  background-image: url('../../../../images/header/openlock_50x50.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90%;
+}

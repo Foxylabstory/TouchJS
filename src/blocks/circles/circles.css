@@ -1,0 +1,9 @@
+.circles {
+  min-height: 55vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: 
+  "left-top centre centre right-top"
+  "left-bottom centre centre right-bottom";
+}

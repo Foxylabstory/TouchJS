@@ -1,0 +1,19 @@
+.hg-button-En, .hg-button-Ru {
+  max-width: 60px;
+}
+
+.hg-button-Ru span {
+  display: none;
+}
+
+.hg-button-En span {
+  display: none;
+}
+
+.hg-button-En::after {
+  content: 'En';
+}
+
+.hg-button-Ru::after {
+  content: 'Ru';
+}
