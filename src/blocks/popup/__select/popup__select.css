@@ -1,0 +1,8 @@
+.popup__select {
+  min-width: 40%;
+  border: none;
+  border-bottom: 1px solid #b5b5b5;
+  border-radius: 5px;
+  box-shadow: 0 0 3px -1px rgb(0 0 0 / 30%);
+  box-sizing: border-box;
+}

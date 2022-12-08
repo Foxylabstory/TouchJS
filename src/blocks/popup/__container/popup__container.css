@@ -1,8 +1,4 @@
 .popup__container {
-  background-color: #fff;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  box-sizing: border-box;
-  border-radius: 10px;
   max-width: 850px;
   position: relative;
   margin: auto;
@@ -11,7 +7,7 @@
     top: calc((100hv/2) - 330px);*/
 }
 
-@media (max-width: 850px) {
+@media (max-width: 870px) {
   .popup__container {
     margin-left: 20px;
     margin-right: 20px;

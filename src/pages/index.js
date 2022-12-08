@@ -127,6 +127,7 @@ const openPopup = () => {
 const closePopup = () => {
   modalWindow.classList.remove('popup_opened');
   keyboardButton.removeEventListener('click', handleToggleKeyboard);
+  keyboardDiv.classList.remove('popup__keyboard_opened');
 }
 
 // открытие попапа
@@ -193,7 +194,7 @@ function handleUpdateLinearGauge(gauge, newData) {
 saveButton.addEventListener('click', function (event) {
   event.preventDefault();
   const newData = {};
-  const values = modalWindow.querySelectorAll('.popup__data');
+  const values = modalWindow.querySelectorAll('.popup_data');
 
   console.log(`elements`, values);
   values.forEach((data) => {

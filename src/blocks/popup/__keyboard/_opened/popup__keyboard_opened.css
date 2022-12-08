@@ -1,5 +1,4 @@
 .popup__keyboard_opened {
   visibility: visible;
   opacity: 1;
-  display: block;
 }

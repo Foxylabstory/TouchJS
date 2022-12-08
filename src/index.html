@@ -173,150 +173,190 @@
       </section>
       <div class="popup">
         <div class="popup__container">
-          <h2 class="popup__header">Выберите и настройте параметр</h2>
-          <form
-            class="popup__form"
-            id="setParam"
-            name="popupForm"
-            autocomplete="on"
-            validate>
-            <fieldset class="popup__fieldset">
-              <div class="popup__group">
-                <label
-                  class="popup__label"
-                  for="param"
-                  >Параметр</label
-                >
-                <select
-                  class="popup__select popup__data"
-                  name="params"
-                  id="params"
-                  size="1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                </select>
-                <label
-                  class="popup__label"
-                  for="units"
-                  >Единицы измерения</label
-                >
-                <select
-                  class="popup__select popup__data"
-                  name="units"
-                  id="units"
-                  size="1">
-                  <option>кН</option>
-                  <option>Тс</option>
-                  <option>кгс</option>
-                </select>
-                <label
-                  class="popup__label"
-                  for="format"
-                  >Формат отображения</label
-                >
-                <select
-                  class="popup__select popup__data"
-                  name="format"
-                  id="format"
-                  size="1">
-                  <option>0.0</option>
-                  <option>0.00</option>
-                  <option>0.000</option>
-                </select>
-              </div>
-              <div class="popup__group">
-                <label
-                  class="popup__label"
-                  for="scale-max"
-                  >Максимум шкалы</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="scale-max"
-                  name="scaleMax"
-                  type="number"
-                  placeholder="Максимум шкалы" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-
-                <label
-                  class="popup__label"
-                  for="param-max"
-                  >Максимум параметра</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="param-max"
-                  name="paramMax"
-                  type="number"
-                  placeholder="Максимум параметра" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-
-                <label
-                  class="popup__label"
-                  for="param-min"
-                  >Минимум параметра</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="param-min"
-                  name="paramMin"
-                  type="number"
-                  placeholder="Минимум параметра" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-
-                <label
-                  class="popup__label"
-                  for="scale-min"
-                  >Минимум шкалы</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="scale-min"
-                  name="scaleMin"
-                  type="number"
-                  placeholder="Минимум шкалы" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-              </div>
-              <div class="popup__group">
-                <button
-                  id="submit"
-                  class="popup__button popup__button_disable"
-                  type="submit">
-                  Сохранить
-                </button>
-                <button
-                  id="reset"
-                  class="popup__button popup__button_disable"
-                  type="reset">
-                  Отменить
-                </button>
-                <button
-                  id="keyboard"
-                  class="popup__button popup__button_disable"
-                  type="button">
-                  Клавиатура
-                </button>
-              </div>
-            </fieldset>
-          </form>
+          <div class="popup__form-container">
+            <h2 class="popup__header">Выберите и настройте параметр</h2>
+            <form
+              class="popup__form"
+              id="setParam"
+              name="popupForm"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group">
+                  <div class="popup__input-section popup__input-section_column">
+                    <label
+                      class="popup__label"
+                      for="param"
+                      >Параметр</label
+                    >
+                    <select
+                      class="popup__select popup__select_params popup_data"
+                      name="params"
+                      id="params"
+                      size="7">
+                      <option>1234567890123456789012345678901234567890</option>
+                      <option>222222222222222222</option>
+                      <option>333333333333333333</option>
+                      <option>444444444444444444</option>
+                      <option>555555555555555555</option>
+                      <option>666666666666666666</option>
+                      <option>777777777777777777</option>
+                      <option>111111111111111111</option>
+                      <option>222222222222222222</option>
+                      <option>333333333333333333</option>
+                      <option>444444444444444444</option>
+                      <option>555555555555555555</option>
+                      <option>666666666666666666</option>
+                      <option>777777777777777777</option>
+                      <option>111111111111111111</option>
+                      <option>222222222222222222</option>
+                      <option>333333333333333333</option>
+                      <option>444444444444444444</option>
+                      <option>555555555555555555</option>
+                      <option>666666666666666666</option>
+                      <option>777777777777777777</option>
+                      <option>111111111111111111</option>
+                      <option>222222222222222222</option>
+                      <option>333333333333333333</option>
+                      <option>444444444444444444</option>
+                      <option>555555555555555555</option>
+                      <option>666666666666666666</option>
+                      <option>777777777777777777</option>
+                      <option>111111111111111111</option>
+                      <option>222222222222222222</option>
+                      <option>333333333333333333</option>
+                      <option>444444444444444444</option>
+                      <option>555555555555555555</option>
+                      <option>666666666666666666</option>
+                      <option>777777777777777777</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="popup__group">
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="units"
+                      >Ед. измерения</label
+                    >
+                    <select
+                      class="popup__select popup_data"
+                      name="units"
+                      id="units"
+                      size="1">
+                      <option>кН</option>
+                      <option>Тс</option>
+                      <option>кгс</option>
+                    </select>
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="format"
+                      >Формат отобр.</label
+                    >
+                    <select
+                      class="popup__select popup_data"
+                      name="format"
+                      id="format"
+                      size="1">
+                      <option>0.0</option>
+                      <option>0.00</option>
+                      <option>0.000</option>
+                    </select>
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="scale-max"
+                      >Макс. шкалы</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="scale-max"
+                      name="scaleMax"
+                      type="number"
+                      placeholder="Макс. шкалы" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="param-max"
+                      >Макс. параметра</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="param-max"
+                      name="paramMax"
+                      type="number"
+                      placeholder="Макс. параметра" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="param-min"
+                      >Мин. параметра</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="param-min"
+                      name="paramMin"
+                      type="number"
+                      placeholder="Мин. параметра" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="scale-min"
+                      >Мин. шкалы</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="scale-min"
+                      name="scaleMin"
+                      type="number"
+                      placeholder="Мин. шкалы" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button popup__button_disable"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button popup__button_disable"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button popup__button_disable"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
           <div class="popup__keyboard">
             <input class="input" />
             <div class="simple-keyboard"></div>
           </div>
-
           <button
             class="popup__form-closer"
             type="button"
