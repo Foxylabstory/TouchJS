@@ -19,6 +19,13 @@ const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
 const saveButton = modalWindow.querySelector('#submit');
 const keyboardButton = modalWindow.querySelector('#keyboard');
 const keyboardDiv = modalWindow.querySelector('.popup__keyboard');
+const paramsOnModal = modalWindow.querySelector('#params');
+const unitsOnModal = modalWindow.querySelector('#units');
+const formatOnModal = modalWindow.querySelector('#format');
+const scaleMaxOnModal = modalWindow.querySelector('#scale-max');
+const paramMaxOnModal = modalWindow.querySelector('#param-max');
+const paramMinOnModal = modalWindow.querySelector('#param-min');
+const scaleMinOnModal = modalWindow.querySelector('#scale-min');
 
 leftMenuButton.addEventListener('click', function (params) {
   leftMenu.classList.toggle('nav_opened');
@@ -130,13 +137,55 @@ const closePopup = () => {
   keyboardDiv.classList.remove('popup__keyboard_opened');
 }
 
+const updatePopup = (gauge) => {
+  formatOnModal.value = gauge.options.valueDec;
+  scaleMaxOnModal.value = gauge.options.maxValue;
+  paramMaxOnModal.value = gauge.options.highlights[1].from;
+  paramMinOnModal.value = gauge.options.highlights[0].to;
+  scaleMinOnModal.value = gauge.options.minValue;
+  console.log(gauge.options.renderTo);
+  if ((String(gauge.options.renderTo)).startsWith('linear')) {
+    const titleAndvalue = gauge.options.units.split(', ');
+    paramsOnModal.value = titleAndvalue[0];
+    unitsOnModal.value = titleAndvalue[1];
+  } else if ((String(gauge.options.renderTo)).startsWith('circle')) {
+    paramsOnModal.value = gauge.options.title;
+    unitsOnModal.value = gauge.options.units;
+  };
+}
+
 // открытие попапа
 gaugeList.forEach((gauge) => {
   gauge.addEventListener('click', function (event) {
     openPopup(event);
     nameOfGauge = event.target.id;
-    console.log(nameOfGauge);
-
+    if (nameOfGauge === 'circleGaugeLeftTop') {
+      updatePopup(leftTopGauge);
+    } else if (nameOfGauge === 'circleGaugeLeftBottom') {
+      updatePopup(leftBottomGauge);
+    } else if (nameOfGauge === 'circleGaugeCenter') {
+      updatePopup(circleGaugeCenter);
+    } else if (nameOfGauge === 'circleGaugeRightTop') {
+      updatePopup(rightTopGauge);
+    } else if (nameOfGauge === 'circleGaugeRightBottom') {
+      updatePopup(rightBottomGauge);
+    } else if (nameOfGauge === 'linearGauge1') {
+      updatePopup(linearGauge1);
+    } else if (nameOfGauge === 'linearGauge2') {
+      updatePopup(linearGauge2);
+    } else if (nameOfGauge === 'linearGauge3') {
+      updatePopup(linearGauge3);
+    } else if (nameOfGauge === 'linearGauge4') {
+      updatePopup(linearGauge4);
+    } else if (nameOfGauge === 'linearGauge5') {
+      updatePopup(linearGauge5);
+    } else if (nameOfGauge === 'linearGauge6') {
+      updatePopup(linearGauge6);
+    } else if (nameOfGauge === 'linearGauge7') {
+      updatePopup(linearGauge7);
+    } else if (nameOfGauge === 'linearGauge8') {
+      updatePopup(linearGauge8);
+    };
   }, true);
 });
 
@@ -167,13 +216,7 @@ function updateGauge(gauge, newData, numberOfParts) {
     { "from": setMinValue, "to": minZone, "color": "rgba(255,0,0,.65)" },
     { "from": maxZone, "to": setMaxValue, "color": "rgba(255,0,0,.75)" }
   ];
-  if (newData.format === '0.0') {
-    gauge.options.valueDec = 1
-  } else if (newData.format === '0.00') {
-    gauge.options.valueDec = 2
-  } else if (newData.format === '0.000') {
-    gauge.options.valueDec = 3
-  };
+  gauge.options.valueDec = newData.format;
   return gauge;
 };
 
@@ -186,7 +229,7 @@ function handleUpdateCircleGauge(gauge, newData) {
 
 function handleUpdateLinearGauge(gauge, newData) {
   updateGauge(gauge, newData, 5);
-  gauge.options.units = newData.params + " " + newData.units;
+  gauge.options.units = newData.params + ", " + newData.units;
   gauge.update();
 };
 
