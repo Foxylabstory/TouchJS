@@ -5,6 +5,7 @@
   opacity: 1;
   /*left: calc((100wv/2) - 430px);
     top: calc((100hv/2) - 330px);*/
+  transform:  translateY(-50%);
 }
 
 @media (max-width: 870px) {

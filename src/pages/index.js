@@ -7,25 +7,12 @@ import 'simple-keyboard/build/css/index.css';
 import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
+import {
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, animateButton, modalWindow, closeModalWindow, saveButton, keyboardButton,
+  keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
+} from '../components/constants/constants';
+
 let nameOfGauge;
-const gaugeList = document.querySelectorAll('.gauge');
-const leftMenuButton = document.querySelector('.header__button_burger-left');
-const leftMenu = document.querySelector('.nav_left');
-const rightMenuButton = document.querySelector('.header__button_burger-right');
-const rightMenu = document.querySelector('.nav_right');
-const animateButton = document.querySelector('.header__button_animate');
-const modalWindow = document.querySelector('.popup');
-const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
-const saveButton = modalWindow.querySelector('#submit');
-const keyboardButton = modalWindow.querySelector('#keyboard');
-const keyboardDiv = modalWindow.querySelector('.popup__keyboard');
-const paramsOnModal = modalWindow.querySelector('#params');
-const unitsOnModal = modalWindow.querySelector('#units');
-const formatOnModal = modalWindow.querySelector('#format');
-const scaleMaxOnModal = modalWindow.querySelector('#scale-max');
-const paramMaxOnModal = modalWindow.querySelector('#param-max');
-const paramMinOnModal = modalWindow.querySelector('#param-min');
-const scaleMinOnModal = modalWindow.querySelector('#scale-min');
 
 leftMenuButton.addEventListener('click', function (params) {
   leftMenu.classList.toggle('nav_opened');
@@ -50,26 +37,64 @@ animateButton.addEventListener("click", function () {
   });
 });
 
+/* const changeHandler = event => {
+  console.log(event.value);
+  const value = event.value;
+  event.value = value.replace(/\D/g, '');
+} */
+
 // логика клавиатуры
+let selectedInput;
 let keyboard = new Keyboard({
   onChange: input => onChange(input),
   onKeyPress: button => onKeyPress(button),
   ...layout,
 });
 
+document.querySelectorAll(".popup_data").forEach(input => {
+  input.addEventListener("focus", onInputFocus);
+  // Optional: Use if you want to track input changes
+  // made without simple-keyboard
+  input.addEventListener("input", onInputChange);
+});
+
+function onInputFocus(event) {
+  selectedInput = `#${event.target.id}`;
+  console.log(selectedInput);
+  keyboard.setInput('');
+  keyboard.setOptions({
+    inputName: event.target.id
+  });
+}
+
+function onInputChange(event) {
+  console.log(event.target.value, event.target.id);
+  console.log(event.value);
+  // const value = event.target.value;
+  // event.target.value = value.match(/\-\d/g);
+  keyboard.setInput(event.target.value, event.target.id);
+}
+
+function onChange(input) {
+  console.log("Input changed", input);
+  document.querySelector(selectedInput || ".input").value = input;
+}
 /**
  * Update simple-keyboard when input is changed directly
  */
-document.querySelector(".input").addEventListener("input", event => {
+/* document.querySelector(".input").addEventListener("input", event => {
+  console.log(event.target.value);
+  console.log(keyboard);
   keyboard.setInput(event.target.value);
-});
+}); */
 
 console.log(keyboard);
 
-function onChange(input) {
+/* function onChange(input) {
   document.querySelector(".input").value = input;
+  //document.activeElement.value = input;
   console.log("Input changed", input);
-}
+} */
 
 function onKeyPress(button) {
   console.log("Button pressed", button);
@@ -119,6 +144,7 @@ document.addEventListener('keydown', function (event) {
 
 function handleToggleKeyboard() {
   keyboardDiv.classList.toggle('popup__keyboard_opened');
+  // CommandRun.run("C:\WINDOWS\system32\osk.exe", []); // нужно дополнительно из дополнения к браузеру делать разрешения
   /* keyboardDiv.classList.toggle('popup__keyboard_visible');
   setTimeout(function () {
     keyboardDiv.classList.toggle('popup__keyboard_opened');
@@ -143,7 +169,6 @@ const updatePopup = (gauge) => {
   paramMaxOnModal.value = gauge.options.highlights[1].from;
   paramMinOnModal.value = gauge.options.highlights[0].to;
   scaleMinOnModal.value = gauge.options.minValue;
-  console.log(gauge.options.renderTo);
   if ((String(gauge.options.renderTo)).startsWith('linear')) {
     const titleAndvalue = gauge.options.units.split(', ');
     paramsOnModal.value = titleAndvalue[0];
@@ -209,7 +234,7 @@ function updateGauge(gauge, newData, numberOfParts) {
   gauge.options.maxValue = setMaxValue;
   const arr = [];
   for (let i = gauge.options.minValue; i <= gauge.options.maxValue; i = i + (gauge.options.maxValue + Math.abs(gauge.options.minValue)) / numberOfParts) {
-    arr.push(i);
+    arr.push(Math.round(i));
   }
   gauge.options.majorTicks = arr;
   gauge.options.highlights = [
@@ -238,12 +263,9 @@ saveButton.addEventListener('click', function (event) {
   event.preventDefault();
   const newData = {};
   const values = modalWindow.querySelectorAll('.popup_data');
-
-  console.log(`elements`, values);
   values.forEach((data) => {
     newData[data.name] = data.value;
   });
-  console.log(newData);
   if (nameOfGauge === 'circleGaugeLeftTop') {
     handleUpdateCircleGauge(leftTopGauge, newData);
   } else if (nameOfGauge === 'circleGaugeLeftBottom') {
