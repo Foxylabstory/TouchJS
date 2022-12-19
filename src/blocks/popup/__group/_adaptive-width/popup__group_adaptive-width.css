@@ -1,0 +1,3 @@
+.popup__group_adaptive-width {
+  max-width: calc(850px - 150px);
+}
