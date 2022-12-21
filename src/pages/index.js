@@ -8,7 +8,8 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
 import {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCode, animateButton, paramsModalWindow, workCodeModalWindow, closeModalWindow, saveButton, keyboardButton,
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, animateButton, paramsModalWindow, workCodeModalWindow, closeModalWindow,
+  paramsSaveButton, workCodeSaveButton, resetButtons, keyboardButtons,
   keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 } from '../components/constants/constants';
 
@@ -136,32 +137,51 @@ function handleShift() {
   });
 }
 
+function handleToggleKeyboard(event) {
+  console.log(event.target.offsetParent.children);
+  keyboardDiv.classList.toggle('keyboard_opened');
+  // CommandRun.run("C:\WINDOWS\system32\osk.exe", []); // нужно дополнительно из дополнения к браузеру делать разрешения
+}
+
+const openPopup = (modalWindow) => {
+  modalWindow.classList.add('popup_opened');
+  keyboardButtons.forEach((keyboardButton) => {
+    keyboardButton.addEventListener('click', handleToggleKeyboard);
+  });
+}
+
+const closePopup = (modalWindow) => {
+  modalWindow.classList.remove('popup_opened');
+  keyboardButtons.forEach((keyboardButton) => {
+    keyboardButton.removeEventListener('click', handleToggleKeyboard);
+  });
+  keyboardDiv.classList.remove('keyboard_opened');
+}
+
+// закрытие попапа по крестику
+closeModalWindow.forEach((closeButton) => {
+  closeButton.addEventListener('click', function (params) {
+    closePopup(closeButton.closest('.popup'));
+  });
+});
+// закрытие по кнопке отменить
+resetButtons.forEach((resetButton) => {
+  resetButton.addEventListener('click', function (params) {
+    closePopup(resetButton.closest('.popup'));
+  });
+});
+// закрытие попапа по нажатию ESC
 document.addEventListener('keydown', function (event) {
   if (event.key === "Escape") {
     closePopup(document.querySelector('.popup_opened'));
   }
 });
-
-function handleToggleKeyboard() {
-  keyboardDiv.classList.toggle('popup__keyboard_opened');
-  // CommandRun.run("C:\WINDOWS\system32\osk.exe", []); // нужно дополнительно из дополнения к браузеру делать разрешения
-  /* keyboardDiv.classList.toggle('popup__keyboard_visible');
-  setTimeout(function () {
-    keyboardDiv.classList.toggle('popup__keyboard_opened');
-  }, 1000) */
-
-}
-
-const openPopup = (modalWindow) => {
-  modalWindow.classList.add('popup_opened');
-  keyboardButton.addEventListener('click', handleToggleKeyboard);
-}
-
-const closePopup = (modalWindow) => {
-  modalWindow.classList.remove('popup_opened');
-  keyboardButton.removeEventListener('click', handleToggleKeyboard);
-  keyboardDiv.classList.remove('popup__keyboard_opened');
-}
+// закрытие попапа по оверлею
+document.addEventListener('click', function (event) {
+  if (event.target === paramsModalWindow || event.target === workCodeModalWindow) {
+    closePopup(event.target);
+  };
+});
 
 const updatePopup = (gauge) => {
   formatOnModal.value = gauge.options.valueDec;
@@ -214,20 +234,6 @@ gaugeList.forEach((gauge) => {
   }, true);
 });
 
-// закрытие попапа
-closeModalWindow.forEach((closeButton) => {
-  closeButton.addEventListener('click', function (params) {
-    closePopup(closeButton.closest('.popup'));
-  });
-});
-
-// закрытие попапа по оверлею
-document.addEventListener('click', function (event) {
-  if (event.target === paramsModalWindow || event.target === workCodeModalWindow) { // посмотри, закрывается окно с кодами работ?
-    closePopup(event.target);
-  };
-});
-
 // обновление параметров
 function updateGauge(gauge, newData, numberOfParts) {
   const setMinValue = parseInt(newData.scaleMin);
@@ -263,7 +269,7 @@ function handleUpdateLinearGauge(gauge, newData) {
 };
 
 //что произойдет если нажать на кнопку сохранить
-saveButton.addEventListener('click', function (event) {
+paramsSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
   const newData = {};
   const values = paramsModalWindow.querySelectorAll('.popup_data');
@@ -299,3 +305,18 @@ saveButton.addEventListener('click', function (event) {
   };
   closePopup(paramsModalWindow);
 })
+
+workCodeButton.addEventListener('click', function (params) {
+  openPopup(workCodeModalWindow);
+});
+
+workCodeSaveButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  const newWorkCodeData = {};
+  const workCodeValues = workCodeModalWindow.querySelectorAll('.popup_data');
+  workCodeValues.forEach((data) => {
+    newWorkCodeData[data.name] = data.value;
+  });
+  console.log(newWorkCodeData);
+  closePopup(workCodeModalWindow);
+});
