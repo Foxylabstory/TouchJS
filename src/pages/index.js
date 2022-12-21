@@ -8,7 +8,7 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
 import {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, animateButton, modalWindow, closeModalWindow, saveButton, keyboardButton,
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCode, animateButton, paramsModalWindow, workCodeModalWindow, closeModalWindow, saveButton, keyboardButton,
   keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 } from '../components/constants/constants';
 
@@ -88,7 +88,7 @@ function onChange(input) {
   keyboard.setInput(event.target.value);
 }); */
 
-console.log(keyboard);
+// console.log(keyboard);
 
 /* function onChange(input) {
   document.querySelector(".input").value = input;
@@ -138,7 +138,7 @@ function handleShift() {
 
 document.addEventListener('keydown', function (event) {
   if (event.key === "Escape") {
-    closePopup();
+    closePopup(document.querySelector('.popup_opened'));
   }
 });
 
@@ -152,12 +152,12 @@ function handleToggleKeyboard() {
 
 }
 
-const openPopup = () => {
+const openPopup = (modalWindow) => {
   modalWindow.classList.add('popup_opened');
   keyboardButton.addEventListener('click', handleToggleKeyboard);
 }
 
-const closePopup = () => {
+const closePopup = (modalWindow) => {
   modalWindow.classList.remove('popup_opened');
   keyboardButton.removeEventListener('click', handleToggleKeyboard);
   keyboardDiv.classList.remove('popup__keyboard_opened');
@@ -182,7 +182,7 @@ const updatePopup = (gauge) => {
 // открытие попапа
 gaugeList.forEach((gauge) => {
   gauge.addEventListener('click', function (event) {
-    openPopup(event);
+    openPopup(paramsModalWindow);
     nameOfGauge = event.target.id;
     if (nameOfGauge === 'circleGaugeLeftTop') {
       updatePopup(leftTopGauge);
@@ -215,12 +215,16 @@ gaugeList.forEach((gauge) => {
 });
 
 // закрытие попапа
-closeModalWindow.addEventListener('click', closePopup);
+closeModalWindow.forEach((closeButton) => {
+  closeButton.addEventListener('click', function (params) {
+    closePopup(closeButton.closest('.popup'));
+  });
+});
 
 // закрытие попапа по оверлею
 document.addEventListener('click', function (event) {
-  if (event.target === modalWindow) {
-    closePopup();
+  if (event.target === paramsModalWindow || event.target === workCodeModalWindow) { // посмотри, закрывается окно с кодами работ?
+    closePopup(event.target);
   };
 });
 
@@ -262,7 +266,7 @@ function handleUpdateLinearGauge(gauge, newData) {
 saveButton.addEventListener('click', function (event) {
   event.preventDefault();
   const newData = {};
-  const values = modalWindow.querySelectorAll('.popup_data');
+  const values = paramsModalWindow.querySelectorAll('.popup_data');
   values.forEach((data) => {
     newData[data.name] = data.value;
   });
@@ -293,5 +297,5 @@ saveButton.addEventListener('click', function (event) {
   } else if (nameOfGauge === 'linearGauge8') {
     handleUpdateLinearGauge(linearGauge8, newData);
   };
-  closePopup();
+  closePopup(paramsModalWindow);
 })

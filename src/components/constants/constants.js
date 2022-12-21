@@ -1,23 +1,26 @@
 const gaugeList = document.querySelectorAll('.gauge');
-const leftMenuButton = document.querySelector('.header__button_burger-left');
+const headerLine = document.querySelector('.header');
+const leftMenuButton = headerLine.querySelector('.header__button_burger-left');
 const leftMenu = document.querySelector('.nav_left');
-const rightMenuButton = document.querySelector('.header__button_burger-right');
+const rightMenuButton = headerLine.querySelector('.header__button_burger-right');
 const rightMenu = document.querySelector('.nav_right');
-const animateButton = document.querySelector('.header__button_animate');
-const modalWindow = document.querySelector('.popup');
-const closeModalWindow = modalWindow.querySelector('.popup__form-closer');
-const saveButton = modalWindow.querySelector('#submit');
-const keyboardButton = modalWindow.querySelector('#keyboard');
-const keyboardDiv = modalWindow.querySelector('.popup__keyboard');
-const paramsOnModal = modalWindow.querySelector('#params');
-const unitsOnModal = modalWindow.querySelector('#units');
-const formatOnModal = modalWindow.querySelector('#format');
-const scaleMaxOnModal = modalWindow.querySelector('#scale-max');
-const paramMaxOnModal = modalWindow.querySelector('#param-max');
-const paramMinOnModal = modalWindow.querySelector('#param-min');
-const scaleMinOnModal = modalWindow.querySelector('#scale-min');
+const workCode = headerLine.querySelector('.header__button_code');
+const animateButton = headerLine.querySelector('.header__button_animate');
+const paramsModalWindow = document.querySelector('.popup_params-setting');
+const workCodeModalWindow = document.querySelector('.popup_work-code-setting');
+const closeModalWindow = document.querySelectorAll('.popup__form-closer');
+const saveButton = document.querySelector('#submit');
+const keyboardButton = document.querySelector('#keyboard');
+const keyboardDiv = document.querySelector('.popup__keyboard');
+const paramsOnModal = paramsModalWindow.querySelector('#params');
+const unitsOnModal = paramsModalWindow.querySelector('#units');
+const formatOnModal = paramsModalWindow.querySelector('#format');
+const scaleMaxOnModal = paramsModalWindow.querySelector('#scale-max');
+const paramMaxOnModal = paramsModalWindow.querySelector('#param-max');
+const paramMinOnModal = paramsModalWindow.querySelector('#param-min');
+const scaleMinOnModal = paramsModalWindow.querySelector('#scale-min');
 
 export {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, animateButton, modalWindow, closeModalWindow, saveButton, keyboardButton,
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCode, animateButton, paramsModalWindow, workCodeModalWindow, closeModalWindow, saveButton, keyboardButton,
   keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 };
