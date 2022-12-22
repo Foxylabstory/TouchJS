@@ -6,6 +6,8 @@ const rightMenuButton = headerLine.querySelector('.header__button_burger-right')
 const rightMenu = document.querySelector('.nav_right');
 const workCodeButton = headerLine.querySelector('.header__button_code');
 const resetTravelBlockPositionButton = headerLine.querySelector('.header__button_tb');
+const setBitPositionButton = headerLine.querySelector('.header__button_bit');
+const setBottomOfHoleButton = headerLine.querySelector('.header__button_hole');
 const animateButton = headerLine.querySelector('.header__button_animate');
 const paramsModalWindow = document.querySelector('.popup_params-setting');
 const closeModalWindow = document.querySelectorAll('.popup__form-closer');
@@ -22,9 +24,11 @@ const paramMinOnModal = paramsModalWindow.querySelector('#param-min');
 const scaleMinOnModal = paramsModalWindow.querySelector('#scale-min');
 const workCodeModalWindow = document.querySelector('.popup_work-code-setting');
 const workCodeSaveButton = workCodeModalWindow.querySelector('#submit');
+const bitHoleModalWindow = document.querySelector('.popup_bit-hole');
+const bitHoleSaveButton = bitHoleModalWindow.querySelector('#submit');
 
 export {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, animateButton, paramsModalWindow,
-  workCodeModalWindow, workCodeSaveButton, resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons,
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton, animateButton, paramsModalWindow,
+  workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton, resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons,
   keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 };

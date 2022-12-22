@@ -8,9 +8,9 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
 import {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, animateButton, paramsModalWindow,
-  workCodeModalWindow, closeModalWindow, paramsSaveButton, workCodeSaveButton, resetButtons, keyboardButtons,
-  keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton,
+  animateButton, paramsModalWindow, workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton, resetButtons, closeModalWindow,
+  paramsSaveButton, keyboardButtons, keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 } from '../components/constants/constants';
 
 let nameOfGauge;
@@ -178,7 +178,7 @@ document.addEventListener('keydown', function (event) {
 });
 // закрытие попапа по оверлею
 document.addEventListener('click', function (event) {
-  if (event.target === paramsModalWindow || event.target === workCodeModalWindow) {
+  if (event.target === paramsModalWindow || event.target === workCodeModalWindow || event.target === bitHoleModalWindow) {
     closePopup(event.target);
   };
 });
@@ -323,4 +323,24 @@ workCodeSaveButton.addEventListener('click', function (event) {
 
 resetTravelBlockPositionButton.addEventListener('click', function (params) {
   console.log(`${resetTravelBlockPositionButton} (resetTravelBlockPositionButton) clicked`);
-})
+  alert('resetTravelBlockPositionButton');
+});
+
+setBitPositionButton.addEventListener('click', function (params) {
+  openPopup(bitHoleModalWindow);
+});
+
+setBottomOfHoleButton.addEventListener('click', function (params) {
+  openPopup(bitHoleModalWindow);
+});
+
+bitHoleSaveButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  const newBitHoleData = {};
+  const bitHoleValues = bitHoleModalWindow.querySelectorAll('.popup_data');
+  bitHoleValues.forEach((data) => {
+    newBitHoleData[data.name] = data.value;
+  });
+  console.log(newBitHoleData);
+  closePopup(bitHoleModalWindow);
+});
