@@ -9,11 +9,13 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 
 import {
   gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton,
-  animateButton, paramsModalWindow, workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton, bitHoleErrorSpan, resetButtons, closeModalWindow,
-  paramsSaveButton, keyboardButtons, keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
+  drillButton, vernButton, lockButton, animateButton, paramsModalWindow, workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton,
+  bitHoleErrorSpan, resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons, keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal,
+  scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 } from '../components/constants/constants';
 
 let nameOfGauge;
+let lockUnlockCondition = false;
 
 leftMenuButton.addEventListener('click', function (params) {
   leftMenu.classList.toggle('nav_opened');
@@ -138,7 +140,6 @@ function handleShift() {
 }
 
 function handleToggleKeyboard(event) {
-  console.log(event.target.offsetParent.children);
   keyboardDiv.classList.toggle('keyboard_opened');
   // CommandRun.run("C:\WINDOWS\system32\osk.exe", []); // нужно дополнительно из дополнения к браузеру делать разрешения
 }
@@ -323,7 +324,7 @@ workCodeSaveButton.addEventListener('click', function (event) {
 
 resetTravelBlockPositionButton.addEventListener('click', function (params) {
   console.log(`${resetTravelBlockPositionButton} (resetTravelBlockPositionButton) clicked`);
-  alert('resetTravelBlockPositionButton');
+  //alert('resetTravelBlockPositionButton');
 });
 
 setBitPositionButton.addEventListener('click', function (params) {
@@ -354,3 +355,44 @@ bitHoleSaveButton.addEventListener('click', function (event) {
     setTimeout(function() { bitHoleErrorSpan.textContent = '' }, 3500);
   }
 });
+
+drillButton.addEventListener('click', function (params) {
+  drillButton.classList.toggle('header__button_active');
+  console.log(`drillButton`);
+});
+
+vernButton.addEventListener('click', function (params) {
+  vernButton.classList.toggle('header__button_active');
+  console.log(`vernButton`);
+});
+
+const handleBlock = (event) => {
+  if(event.target !== lockButton) {
+    event.stopPropagation();
+    event.preventDefault();
+  };
+}
+
+const lockScreen = () => {
+  lockUnlockCondition = !lockUnlockCondition;
+  lockButton.classList.add('header__button_active');
+  lockButton.classList.add('header__button_lock');
+  document.addEventListener("click", handleBlock, true);
+}
+
+const unlockScreen = () => {
+  lockUnlockCondition = !lockUnlockCondition;
+  lockButton.classList.remove('header__button_active');
+  lockButton.classList.remove('header__button_lock');
+  document.removeEventListener("click", handleBlock, true);
+}
+
+const handleLockUnlock = (params) => {
+  if (lockUnlockCondition) {
+    unlockScreen();
+  } else {
+    lockScreen();
+  }
+}
+
+lockButton.addEventListener('click', handleLockUnlock);
