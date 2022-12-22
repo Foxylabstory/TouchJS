@@ -26,9 +26,10 @@ const workCodeModalWindow = document.querySelector('.popup_work-code-setting');
 const workCodeSaveButton = workCodeModalWindow.querySelector('#submit');
 const bitHoleModalWindow = document.querySelector('.popup_bit-hole');
 const bitHoleSaveButton = bitHoleModalWindow.querySelector('#submit');
+const bitHoleErrorSpan = bitHoleModalWindow.querySelector('.popup__error')
 
 export {
   gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton, animateButton, paramsModalWindow,
-  workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton, resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons,
+  workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton, bitHoleErrorSpan, resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons,
   keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 };

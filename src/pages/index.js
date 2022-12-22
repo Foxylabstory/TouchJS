@@ -9,7 +9,7 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 
 import {
   gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton,
-  animateButton, paramsModalWindow, workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton, resetButtons, closeModalWindow,
+  animateButton, paramsModalWindow, workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton, bitHoleErrorSpan, resetButtons, closeModalWindow,
   paramsSaveButton, keyboardButtons, keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 } from '../components/constants/constants';
 
@@ -341,6 +341,16 @@ bitHoleSaveButton.addEventListener('click', function (event) {
   bitHoleValues.forEach((data) => {
     newBitHoleData[data.name] = data.value;
   });
-  console.log(newBitHoleData);
-  closePopup(bitHoleModalWindow);
+  if(newBitHoleData.bitPosition === '' || newBitHoleData.bottomOfHole === '') {
+    console.log(`empty`);
+    bitHoleErrorSpan.textContent = 'Положение долота или глубина забоя не должны быть пусты';
+    setTimeout(function() { bitHoleErrorSpan.textContent = '' }, 3500);
+  } else if (newBitHoleData.bitPosition <= newBitHoleData.bottomOfHole) {
+    console.log(newBitHoleData);
+    closePopup(bitHoleModalWindow);
+  } else {
+    console.log(`error`);
+    bitHoleErrorSpan.textContent = 'Положение долота должно быть меньше или равно, глубине забоя';
+    setTimeout(function() { bitHoleErrorSpan.textContent = '' }, 3500);
+  }
 });
