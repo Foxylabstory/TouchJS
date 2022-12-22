@@ -8,8 +8,8 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
 import {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, animateButton, paramsModalWindow, workCodeModalWindow, closeModalWindow,
-  paramsSaveButton, workCodeSaveButton, resetButtons, keyboardButtons,
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, animateButton, paramsModalWindow,
+  workCodeModalWindow, closeModalWindow, paramsSaveButton, workCodeSaveButton, resetButtons, keyboardButtons,
   keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 } from '../components/constants/constants';
 
@@ -320,3 +320,7 @@ workCodeSaveButton.addEventListener('click', function (event) {
   console.log(newWorkCodeData);
   closePopup(workCodeModalWindow);
 });
+
+resetTravelBlockPositionButton.addEventListener('click', function (params) {
+  console.log(`${resetTravelBlockPositionButton} (resetTravelBlockPositionButton) clicked`);
+})

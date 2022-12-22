@@ -5,6 +5,7 @@ const leftMenu = document.querySelector('.nav_left');
 const rightMenuButton = headerLine.querySelector('.header__button_burger-right');
 const rightMenu = document.querySelector('.nav_right');
 const workCodeButton = headerLine.querySelector('.header__button_code');
+const resetTravelBlockPositionButton = headerLine.querySelector('.header__button_tb');
 const animateButton = headerLine.querySelector('.header__button_animate');
 const paramsModalWindow = document.querySelector('.popup_params-setting');
 const closeModalWindow = document.querySelectorAll('.popup__form-closer');
@@ -23,7 +24,7 @@ const workCodeModalWindow = document.querySelector('.popup_work-code-setting');
 const workCodeSaveButton = workCodeModalWindow.querySelector('#submit');
 
 export {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, animateButton, paramsModalWindow,
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, animateButton, paramsModalWindow,
   workCodeModalWindow, workCodeSaveButton, resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons,
   keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
 };
