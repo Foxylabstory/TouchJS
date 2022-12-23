@@ -8,23 +8,33 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
 import {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton, resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton,
-  drillButton, vernButton, lockButton, animateButton, paramsModalWindow, workCodeModalWindow, workCodeSaveButton, bitHoleModalWindow, bitHoleSaveButton,
-  bitHoleErrorSpan, resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons, keyboardDiv, paramsOnModal, unitsOnModal, formatOnModal,
-  scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal
+  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton,
+  resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton, drillButton, vernButton, lockButton, animateButton,
+  paramsModalWindow, workCodeModalWindow, workCodeSaveButton,
+  bitHoleModalWindow, bitHoleSaveButton, bitHoleErrorSpan, bindsModalWindow, bindsSaveButton,
+  resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons, keyboardDiv,
+  paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal,
+  bindsCallButton
 } from '../components/constants/constants';
 
 let nameOfGauge;
 let lockUnlockCondition = false;
 
+const menuOpener = (menuSide, menuButtonSide) => {
+  menuSide.classList.toggle('nav_opened');
+  menuButtonSide.classList.toggle('header__button_active');
+};
+
 leftMenuButton.addEventListener('click', function (params) {
-  leftMenu.classList.toggle('nav_opened');
-  leftMenuButton.classList.toggle('header__button_active');
+  menuOpener(leftMenu, leftMenuButton);
+  // leftMenu.classList.toggle('nav_opened');
+  // leftMenuButton.classList.toggle('header__button_active');
 })
 
 rightMenuButton.addEventListener('click', function (params) {
-  rightMenu.classList.toggle('nav_opened');
-  rightMenuButton.classList.toggle('header__button_active');
+  menuOpener(rightMenu, rightMenuButton);
+  // rightMenu.classList.toggle('nav_opened');
+  // rightMenuButton.classList.toggle('header__button_active');
 })
 
 // запуск генерации рандомных значений для индикаторов
@@ -174,12 +184,14 @@ resetButtons.forEach((resetButton) => {
 // закрытие попапа по нажатию ESC
 document.addEventListener('keydown', function (event) {
   if (event.key === "Escape") {
-    closePopup(document.querySelector('.popup_opened'));
-  }
+    if (document.querySelector('.popup_opened')) {
+      closePopup(document.querySelector('.popup_opened'));
+    };
+  };
 });
 // закрытие попапа по оверлею
 document.addEventListener('click', function (event) {
-  if (event.target === paramsModalWindow || event.target === workCodeModalWindow || event.target === bitHoleModalWindow) {
+  if (event.target === paramsModalWindow || event.target === workCodeModalWindow || event.target === bitHoleModalWindow || event.target === bindsModalWindow) {
     closePopup(event.target);
   };
 });
@@ -396,3 +408,19 @@ const handleLockUnlock = (params) => {
 }
 
 lockButton.addEventListener('click', handleLockUnlock);
+
+bindsCallButton.addEventListener('click',function (params) {
+  menuOpener(rightMenu, rightMenuButton);
+  openPopup(bindsModalWindow);
+} );
+
+bindsSaveButton.addEventListener('click',function (event) {
+  event.preventDefault();
+  const newBindsData = {};
+  const bindValues = bindsModalWindow.querySelectorAll('.popup_data');
+  bindValues.forEach((data) => {
+    newBindsData[data.name] = data.value;
+  });
+  console.log(newBindsData);
+  closePopup(bindsModalWindow);
+});

@@ -71,6 +71,7 @@
           <a
             href="#"
             class="nav__link"
+            id="binds"
             >Параметры привязки</a
           >
         </li>
@@ -161,6 +162,7 @@
           <canvas id="circleGaugeRightBottom"></canvas>
         </div>
       </section>
+
       <section class="linears">
         <div class="gauge linears__lenear"><canvas id="linearGauge1"></canvas></div>
         <div class="gauge linears__lenear"><canvas id="linearGauge2"></canvas></div>
@@ -171,6 +173,7 @@
         <div class="gauge linears__lenear"><canvas id="linearGauge7"></canvas></div>
         <div class="gauge linears__lenear"><canvas id="linearGauge8"></canvas></div>
       </section>
+
       <div class="popup popup_params-setting">
         <div class="popup__container">
           <div class="popup__form-container">
@@ -332,6 +335,7 @@
             aria-label="Закрыть форму"></button>
         </div>
       </div>
+
       <div class="popup popup_work-code-setting">
         <div class="popup__container">
           <div class="popup__form-container">
@@ -438,6 +442,133 @@
                       type="number"
                       placeholder="Глубина забоя" />
                   </div>
+                  <span
+                    id="name-card-error"
+                    class="popup__error"></span>
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <button
+            class="popup__form-closer"
+            type="button"
+            aria-label="Закрыть форму"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_binds">
+        <div class="popup__container">
+          <div class="popup__form-container">
+            <h2 class="popup__header popup__header_medium-width">
+              Параметры привязки
+            </h2>
+            <form
+              class="popup__form"
+              id="setBinds"
+              name="popupBinds"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group popup__group_fix-width">
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="well"
+                      >Скважина</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="well"
+                      name="well"
+                      type="text"
+                      placeholder="Скважина" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="pad"
+                      >Куст</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="pad"
+                      name="pad"
+                      type="text"
+                      placeholder="Куст" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="field"
+                      >Месторождение</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="field"
+                      name="field"
+                      type="text"
+                      placeholder="Месторождение" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="crew"
+                      >Бригада</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="crew"
+                      name="crew"
+                      type="text"
+                      placeholder="Бригада" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="shop"
+                      >Цех</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="shop"
+                      name="shop"
+                      type="text"
+                      placeholder="Цех" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="rig"
+                      >СПУ</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="rig"
+                      name="rig"
+                      type="text"
+                      placeholder="СПУ" />
+                  </div>
+
                   <span
                     id="name-card-error"
                     class="popup__error"></span>
