@@ -17,7 +17,7 @@ import {
   bindsCallButton
 } from '../components/constants/constants';
 
-let nameOfGauge;
+let openedGauge;
 let lockUnlockCondition = false;
 
 const menuOpener = (menuSide, menuButtonSide) => {
@@ -27,18 +27,13 @@ const menuOpener = (menuSide, menuButtonSide) => {
 
 leftMenuButton.addEventListener('click', function (params) {
   menuOpener(leftMenu, leftMenuButton);
-  // leftMenu.classList.toggle('nav_opened');
-  // leftMenuButton.classList.toggle('header__button_active');
 })
 
 rightMenuButton.addEventListener('click', function (params) {
   menuOpener(rightMenu, rightMenuButton);
-  // rightMenu.classList.toggle('nav_opened');
-  // rightMenuButton.classList.toggle('header__button_active');
 })
 
 // запуск генерации рандомных значений для индикаторов
-// let timers = [];
 animateButton.addEventListener("click", function () {
   animateButton.classList.add('header__button_active');
   setInterval(function (params) {
@@ -46,11 +41,6 @@ animateButton.addEventListener("click", function () {
       gauge.value = Math.random() * (gauge.options.maxValue - gauge.options.minValue) + gauge.options.minValue;
     });
   }, 500);
-  /* document.gauges.forEach(function (gauge) {
-    timers.push(setInterval(function () {
-      gauge.value = Math.random() * (gauge.options.maxValue - gauge.options.minValue) + gauge.options.minValue;
-    }, gauge.animation.duration + 500));
-  }); */
 });
 
 /* const changeHandler = event => {
@@ -216,37 +206,11 @@ const updatePopup = (gauge) => {
 }
 
 // открытие попапа
-gaugeList.forEach((gauge) => {
-  gauge.addEventListener('click', function (event) {
+document.gauges.forEach((gauge) => {
+  document.querySelector(`#${gauge.options.renderTo}`).addEventListener('click', function (params) {
+    updatePopup(gauge);
     openPopup(paramsModalWindow);
-    nameOfGauge = event.target.id;
-    if (nameOfGauge === 'circleGaugeLeftTop') {
-      updatePopup(leftTopGauge);
-    } else if (nameOfGauge === 'circleGaugeLeftBottom') {
-      updatePopup(leftBottomGauge);
-    } else if (nameOfGauge === 'circleGaugeCenter') {
-      updatePopup(circleGaugeCenter);
-    } else if (nameOfGauge === 'circleGaugeRightTop') {
-      updatePopup(rightTopGauge);
-    } else if (nameOfGauge === 'circleGaugeRightBottom') {
-      updatePopup(rightBottomGauge);
-    } else if (nameOfGauge === 'linearGauge1') {
-      updatePopup(linearGauge1);
-    } else if (nameOfGauge === 'linearGauge2') {
-      updatePopup(linearGauge2);
-    } else if (nameOfGauge === 'linearGauge3') {
-      updatePopup(linearGauge3);
-    } else if (nameOfGauge === 'linearGauge4') {
-      updatePopup(linearGauge4);
-    } else if (nameOfGauge === 'linearGauge5') {
-      updatePopup(linearGauge5);
-    } else if (nameOfGauge === 'linearGauge6') {
-      updatePopup(linearGauge6);
-    } else if (nameOfGauge === 'linearGauge7') {
-      updatePopup(linearGauge7);
-    } else if (nameOfGauge === 'linearGauge8') {
-      updatePopup(linearGauge8);
-    };
+    openedGauge = gauge;
   }, true);
 });
 
@@ -292,32 +256,10 @@ paramsSaveButton.addEventListener('click', function (event) {
   values.forEach((data) => {
     newData[data.name] = data.value;
   });
-  if (nameOfGauge === 'circleGaugeLeftTop') {
-    handleUpdateCircleGauge(leftTopGauge, newData);
-  } else if (nameOfGauge === 'circleGaugeLeftBottom') {
-    handleUpdateCircleGauge(leftBottomGauge, newData);
-  } else if (nameOfGauge === 'circleGaugeCenter') {
-    handleUpdateCircleGauge(circleGaugeCenter, newData);
-  } else if (nameOfGauge === 'circleGaugeRightTop') {
-    handleUpdateCircleGauge(rightTopGauge, newData);
-  } else if (nameOfGauge === 'circleGaugeRightBottom') {
-    handleUpdateCircleGauge(rightBottomGauge, newData);
-  } else if (nameOfGauge === 'linearGauge1') {
-    handleUpdateLinearGauge(linearGauge1, newData);
-  } else if (nameOfGauge === 'linearGauge2') {
-    handleUpdateLinearGauge(linearGauge2, newData);
-  } else if (nameOfGauge === 'linearGauge3') {
-    handleUpdateLinearGauge(linearGauge3, newData);
-  } else if (nameOfGauge === 'linearGauge4') {
-    handleUpdateLinearGauge(linearGauge4, newData);
-  } else if (nameOfGauge === 'linearGauge5') {
-    handleUpdateLinearGauge(linearGauge5, newData);
-  } else if (nameOfGauge === 'linearGauge6') {
-    handleUpdateLinearGauge(linearGauge6, newData);
-  } else if (nameOfGauge === 'linearGauge7') {
-    handleUpdateLinearGauge(linearGauge7, newData);
-  } else if (nameOfGauge === 'linearGauge8') {
-    handleUpdateLinearGauge(linearGauge8, newData);
+  if ((String(openedGauge.options.renderTo)).startsWith('linear')) {
+    handleUpdateLinearGauge(openedGauge, newData);
+  } else if ((String(openedGauge.options.renderTo)).startsWith('circle')) {
+    handleUpdateCircleGauge(openedGauge, newData);
   };
   closePopup(paramsModalWindow);
 })
@@ -357,17 +299,17 @@ bitHoleSaveButton.addEventListener('click', function (event) {
   bitHoleValues.forEach((data) => {
     newBitHoleData[data.name] = data.value;
   });
-  if(newBitHoleData.bitPosition === '' || newBitHoleData.bottomOfHole === '') {
+  if (newBitHoleData.bitPosition === '' || newBitHoleData.bottomOfHole === '') {
     console.log(`empty`);
     bitHoleErrorSpan.textContent = 'Положение долота или глубина забоя не должны быть пусты';
-    setTimeout(function() { bitHoleErrorSpan.textContent = '' }, 3500);
+    setTimeout(function () { bitHoleErrorSpan.textContent = '' }, 3500);
   } else if (newBitHoleData.bitPosition <= newBitHoleData.bottomOfHole) {
     console.log(newBitHoleData);
     closePopup(bitHoleModalWindow);
   } else {
     console.log(`error`);
     bitHoleErrorSpan.textContent = 'Положение долота должно быть меньше или равно, глубине забоя';
-    setTimeout(function() { bitHoleErrorSpan.textContent = '' }, 3500);
+    setTimeout(function () { bitHoleErrorSpan.textContent = '' }, 3500);
   }
 });
 
@@ -382,7 +324,7 @@ vernButton.addEventListener('click', function (params) {
 });
 
 const handleBlock = (event) => {
-  if(event.target !== lockButton) {
+  if (event.target !== lockButton) {
     event.stopPropagation();
     event.preventDefault();
   };
@@ -412,12 +354,12 @@ const handleLockUnlock = (params) => {
 
 lockButton.addEventListener('click', handleLockUnlock);
 
-bindsCallButton.addEventListener('click',function (params) {
+bindsCallButton.addEventListener('click', function (params) {
   menuOpener(rightMenu, rightMenuButton);
   openPopup(bindsModalWindow);
-} );
+});
 
-bindsSaveButton.addEventListener('click',function (event) {
+bindsSaveButton.addEventListener('click', function (event) {
   event.preventDefault();
   const newBindsData = {};
   const bindValues = bindsModalWindow.querySelectorAll('.popup_data');
@@ -427,3 +369,5 @@ bindsSaveButton.addEventListener('click',function (event) {
   console.log(newBindsData);
   closePopup(bindsModalWindow);
 });
+
+console.log(document.gauges);
