@@ -38,16 +38,19 @@ rightMenuButton.addEventListener('click', function (params) {
 })
 
 // запуск генерации рандомных значений для индикаторов
-let timers = [];
+// let timers = [];
 animateButton.addEventListener("click", function () {
   animateButton.classList.add('header__button_active');
-  document.gauges.forEach(function (gauge) {
+  setInterval(function (params) {
+    document.gauges.forEach((gauge) => {
+      gauge.value = Math.random() * (gauge.options.maxValue - gauge.options.minValue) + gauge.options.minValue;
+    });
+  }, 500);
+  /* document.gauges.forEach(function (gauge) {
     timers.push(setInterval(function () {
-      gauge.value = Math.random() *
-        (gauge.options.maxValue - gauge.options.minValue) +
-        gauge.options.minValue;
+      gauge.value = Math.random() * (gauge.options.maxValue - gauge.options.minValue) + gauge.options.minValue;
     }, gauge.animation.duration + 500));
-  });
+  }); */
 });
 
 /* const changeHandler = event => {

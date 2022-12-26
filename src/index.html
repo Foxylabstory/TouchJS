@@ -479,9 +479,7 @@
       <div class="popup popup_binds">
         <div class="popup__container">
           <div class="popup__form-container">
-            <h2 class="popup__header popup__header_medium-width">
-              Параметры привязки
-            </h2>
+            <h2 class="popup__header popup__header_medium-width">Параметры привязки</h2>
             <form
               class="popup__form"
               id="setBinds"
@@ -572,6 +570,71 @@
                   <span
                     id="name-card-error"
                     class="popup__error"></span>
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <button
+            class="popup__form-closer"
+            type="button"
+            aria-label="Закрыть форму"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_app-settings popup_opened">
+        <div class="popup__container">
+          <div class="popup__form-container">
+            <h2 class="popup__header popup__header_medium-width">Настройки приложения</h2>
+            <form
+              class="popup__form"
+              id="settings"
+              name="popupSettings"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group popup__group_fix-width">
+                  <div class="popup__input-section popup__input-section_column">
+                    <label
+                      class="popup__label"
+                      for="ip"
+                      >IP адрес МУ</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="ip"
+                      name="ip"
+                      type="number"
+                      placeholder="IP адрес МУ" />
+                    <span
+                      id="name-card-error"
+                      class="popup__error"></span>
+                  </div>
+                  <button
+                    id="closeApp"
+                    class="popup__button"
+                    type="button">
+                    Выйти
+                  </button>
                 </div>
                 <div class="popup__group">
                   <button
