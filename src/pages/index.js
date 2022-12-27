@@ -8,13 +8,19 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 // import layoutEn from '../vendor/keyboard/layout/englishLayout';
 
 import {
-  gaugeList, leftMenuButton, leftMenu, rightMenuButton, rightMenu, workCodeButton,
-  resetTravelBlockPositionButton, setBitPositionButton, setBottomOfHoleButton, drillButton, vernButton, lockButton, animateButton,
-  paramsModalWindow, workCodeModalWindow, workCodeSaveButton,
-  bitHoleModalWindow, bitHoleSaveButton, bitHoleErrorSpan, bindsModalWindow, bindsSaveButton,
-  resetButtons, closeModalWindow, paramsSaveButton, keyboardButtons, keyboardDiv,
-  paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal,
-  bindsCallButton
+  gaugeList, resetButtons, closeModalWindow, keyboardButtons, keyboardDiv,
+  leftMenuButton, leftMenu,
+  rightMenuButton, rightMenu,
+  workCodeButton, workCodeModalWindow, workCodeSaveButton,
+  resetTravelBlockPositionButton,
+  setBitPositionButton, setBottomOfHoleButton, bitHoleModalWindow, bitHoleSaveButton, bitHoleErrorSpan,
+  drillButton,
+  vernButton,
+  lockButton,
+  animateButton,
+  bindsCallButton, bindsModalWindow, bindsSaveButton,
+  paramsModalWindow, paramsSaveButton, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal,
+  appSettingsCallButton, appSettingsModalWindow, appSettingsSaveButton
 } from '../components/constants/constants';
 
 let openedGauge;
@@ -36,9 +42,11 @@ rightMenuButton.addEventListener('click', function (params) {
 // запуск генерации рандомных значений для индикаторов
 animateButton.addEventListener("click", function () {
   animateButton.classList.add('header__button_active');
+  
   setInterval(function (params) {
     document.gauges.forEach((gauge) => {
       gauge.value = Math.random() * (gauge.options.maxValue - gauge.options.minValue) + gauge.options.minValue;
+      gauge.update();
     });
   }, 500);
 });
@@ -184,7 +192,9 @@ document.addEventListener('keydown', function (event) {
 });
 // закрытие попапа по оверлею
 document.addEventListener('click', function (event) {
-  if (event.target === paramsModalWindow || event.target === workCodeModalWindow || event.target === bitHoleModalWindow || event.target === bindsModalWindow) {
+  if (event.target === paramsModalWindow || event.target === workCodeModalWindow ||
+    event.target === bitHoleModalWindow || event.target === bindsModalWindow ||
+    event.target === appSettingsModalWindow) {
     closePopup(event.target);
   };
 });
@@ -370,4 +380,10 @@ bindsSaveButton.addEventListener('click', function (event) {
   closePopup(bindsModalWindow);
 });
 
-console.log(document.gauges);
+appSettingsCallButton.addEventListener('click', function (params) {
+  console.log(`appSettingsCallButton`);
+  menuOpener(rightMenu, rightMenuButton);
+  openPopup(appSettingsModalWindow);
+})
+
+// console.log(document.gauges);
