@@ -383,6 +383,17 @@ appSettingsCallButton.addEventListener('click', function (params) {
   console.log(`appSettingsCallButton`);
   menuOpener(rightMenu, rightMenuButton);
   openPopup(appSettingsModalWindow);
-})
+});
+
+appSettingsSaveButton.addEventListener('click', function (event) {
+  event.preventDefault();
+  const newAppSettingsData = {};
+  const appSettingsValues = appSettingsModalWindow.querySelectorAll('.popup_data');
+  appSettingsValues.forEach((data) => {
+    newAppSettingsData[data.name] = data.value;
+  });
+  console.log(newAppSettingsData);
+  closePopup(appSettingsModalWindow);
+});
 
 // console.log(document.gauges);
