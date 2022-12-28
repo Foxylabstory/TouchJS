@@ -1,3 +1,6 @@
 .popup__label_parameter {
-  margin-bottom: 5px;
+  /* margin-bottom: 14px; */
+  height: 40px;
+  display: flex;
+  align-items: center;
 }

@@ -46,8 +46,10 @@
 @import url('../blocks/popup/__input-section/_column/popup__input-section_column.css');
 @import url('../blocks/popup/__select/popup__select.css');
 @import url('../blocks/popup/__select/_params/popup__select_params.css');
+@import url('../blocks/popup/__label/popup__label.css');
 @import url('../blocks/popup/__label/_parameter/popup__label_parameter.css');
 @import url('../blocks/popup/__input/popup__input.css');
+@import url('../blocks/popup/__input/_width/popup__input_width_wide.css');
 @import url('../blocks/popup/__button/popup__button.css');
 @import url('../blocks/popup/__form-closer/popup__form-closer.css');
 @import url('../blocks/popup/__form-closer/_img/popup__form-closer_img.css');

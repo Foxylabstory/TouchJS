@@ -42,7 +42,6 @@ rightMenuButton.addEventListener('click', function (params) {
 // запуск генерации рандомных значений для индикаторов
 animateButton.addEventListener("click", function () {
   animateButton.classList.add('header__button_active');
-  
   setInterval(function (params) {
     document.gauges.forEach((gauge) => {
       gauge.value = Math.random() * (gauge.options.maxValue - gauge.options.minValue) + gauge.options.minValue;
