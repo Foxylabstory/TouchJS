@@ -15,6 +15,7 @@ const animateButton = headerLine.querySelector('.header__button_animate');
 
 const bindsCallButton = document.querySelector('#binds');
 const appSettingsCallButton = document.querySelector('#appSettings');
+const closeAppButton = document.querySelector('#closeApp');
 
 const paramsModalWindow = document.querySelector('.popup_params-setting');
 const closeModalWindow = document.querySelectorAll('.popup__form-closer');
@@ -55,5 +56,6 @@ export {
   animateButton,
   bindsCallButton, bindsModalWindow, bindsSaveButton,
   paramsModalWindow, paramsSaveButton, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal,
-  appSettingsCallButton, appSettingsModalWindow, appSettingsSaveButton
+  appSettingsCallButton, appSettingsModalWindow, appSettingsSaveButton,
+  closeAppButton
 };

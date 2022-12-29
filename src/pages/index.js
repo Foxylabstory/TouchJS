@@ -20,7 +20,8 @@ import {
   animateButton,
   bindsCallButton, bindsModalWindow, bindsSaveButton,
   paramsModalWindow, paramsSaveButton, paramsOnModal, unitsOnModal, formatOnModal, scaleMaxOnModal, paramMaxOnModal, paramMinOnModal, scaleMinOnModal,
-  appSettingsCallButton, appSettingsModalWindow, appSettingsSaveButton
+  appSettingsCallButton, appSettingsModalWindow, appSettingsSaveButton,
+  closeAppButton
 } from '../components/constants/constants';
 
 let openedGauge;
@@ -395,5 +396,12 @@ appSettingsSaveButton.addEventListener('click', function (event) {
   console.log(newAppSettingsData);
   closePopup(appSettingsModalWindow);
 });
+
+closeAppButton.addEventListener('click', function (params) {
+  if (confirm('Вы действительно хотите закрыть приложение?')) {
+    console.log(window);
+    window.close();
+  }
+})
 
 // console.log(document.gauges);
