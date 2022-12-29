@@ -10,6 +10,7 @@ import layout from '../vendor/keyboard/layout/russianLayout';
 import {
   gaugeList, resetButtons, closeModalWindow, keyboardButtons, keyboardDiv,
   leftMenuButton, leftMenu,
+  time,
   rightMenuButton, rightMenu,
   workCodeButton, workCodeModalWindow, workCodeSaveButton,
   resetTravelBlockPositionButton,
@@ -32,9 +33,9 @@ const menuOpener = (menuSide, menuButtonSide) => {
   menuButtonSide.classList.toggle('header__button_active');
 };
 
-leftMenuButton.addEventListener('click', function (params) {
+/* leftMenuButton.addEventListener('click', function (params) {
   menuOpener(leftMenu, leftMenuButton);
-})
+}) */
 
 rightMenuButton.addEventListener('click', function (params) {
   menuOpener(rightMenu, rightMenuButton);
@@ -396,6 +397,12 @@ appSettingsSaveButton.addEventListener('click', function (event) {
   console.log(newAppSettingsData);
   closePopup(appSettingsModalWindow);
 });
+
+setInterval(function (params) {
+  const currentTime = new Date();
+  time.setAttribute('datetime', currentTime);
+  time.textContent = `${currentTime.getHours()}:${currentTime.getMinutes()}:${currentTime.getSeconds()}`;
+}, 1000);
 
 closeAppButton.addEventListener('click', function (params) {
   if (confirm('Вы действительно хотите закрыть приложение?')) {

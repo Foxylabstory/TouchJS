@@ -2,6 +2,7 @@ const gaugeList = document.querySelectorAll('.gauge');
 const headerLine = document.querySelector('.header');
 const leftMenuButton = headerLine.querySelector('.header__button_burger-left');
 const leftMenu = document.querySelector('.nav_left');
+const time = headerLine.querySelector('.time');
 const rightMenuButton = headerLine.querySelector('.header__button_burger-right');
 const rightMenu = document.querySelector('.nav_right');
 const workCodeButton = headerLine.querySelector('.header__button_code');
@@ -11,7 +12,7 @@ const setBottomOfHoleButton = headerLine.querySelector('.header__button_hole');
 const drillButton = headerLine.querySelector('.header__button_drill');
 const vernButton = headerLine.querySelector('.header__button_vern');
 const lockButton = headerLine.querySelector('.header__button_unlock');
-const animateButton = headerLine.querySelector('.header__button_animate');
+const animateButton = document.querySelector('.header__button_animate');
 
 const bindsCallButton = document.querySelector('#binds');
 const appSettingsCallButton = document.querySelector('#appSettings');
@@ -46,6 +47,7 @@ const appSettingsSaveButton = appSettingsModalWindow.querySelector('#submit');
 export {
   gaugeList, resetButtons, closeModalWindow, keyboardButtons, keyboardDiv,
   leftMenuButton, leftMenu,
+  time,
   rightMenuButton, rightMenu,
   workCodeButton, workCodeModalWindow, workCodeSaveButton,
   resetTravelBlockPositionButton,
