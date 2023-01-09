@@ -17,29 +17,147 @@
   </head>
   <body class="page">
     <header class="header">
-      <button class="header__button header__button_small header__button_burger header__button_burger-left"></button>
+      <!-- <button class="header__button header__button_small header__button_burger header__button_burger-left"></button> -->
+      <time class="time" datetime=""></time>
       <div class="header__buttons">
-        <button class="header__button header__button_code" aria-label="Код работ">Код работ</button>
-        <button class="header__button header__button_link" aria-label="Обнулить тальблок">Обнулить тальблок</button>
-        <button class="header__button header__button_bit" aria-label="Положение долота">Положение долота</button>
-        <button class="header__button header__button_hole" aria-label="Глубина забоя">Глубина забоя</button>
-        <button class="header__button header__button_drill" aria-label="Бурение вкл/откл">Бурение вкл/откл</button>
-        <button class="header__button header__button_vern" aria-label="Верньер вкл/откл">Верньер вкл/откл</button>
-        <button class="header__button header__button_small header__button_bright" aria-label="Яркость"></button>
-        <button class="header__button header__button_small header__button_unlock" aria-label="Блокировка"></button>
-        <button class="header__button header__button_small header__button_animate" aria-label="Animate">Animate</button>
+        <button
+          class="header__button header__button_code"
+          aria-label="Код работ">
+          Код работ
+        </button>
+        <button
+          class="header__button header__button_tb"
+          aria-label="Обнулить тальблок">
+          Обнулить тальблок
+        </button>
+        <button
+          class="header__button header__button_bit"
+          aria-label="Положение долота">
+          Положение долота
+        </button>
+        <button
+          class="header__button header__button_hole"
+          aria-label="Глубина забоя">
+          Глубина забоя
+        </button>
+        <button
+          class="header__button header__button_drill"
+          aria-label="Бурение вкл/откл">
+          Бурение вкл/откл
+        </button>
+        <button
+          class="header__button header__button_vern"
+          aria-label="Верньер вкл/откл">
+          Верньер вкл/откл
+        </button>
+        <button
+          class="header__button header__button_small header__button_bright"
+          aria-label="Яркость"></button>
+        <button
+          class="header__button header__button_small header__button_unlock"
+          aria-label="Блокировка"></button>
       </div>
-      <button class="header__button header__button_small header__button_burger header__button_burger-right"></button>
+      <button
+        class="header__button header__button_small header__button_burger header__button_burger-right"></button>
     </header>
-    <nav class="nav">
+
+    <!-- <nav class="nav nav_left">
       <ul class="nav__list">
-        <li class="nav__item"><a href="#" class="nav__link">Параметры привязки</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Рабочие параметры</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Обнуление параметров</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Системные параметры</a></li>
-        <li class="nav__item"><a href="#" class="nav__link">Параметры подключения</a></li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Some text</a
+          >
+        </li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Some text</a
+          >
+        </li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Some text</a
+          >
+        </li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Some text</a
+          >
+        </li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Some text</a
+          >
+        </li>
+      </ul>
+    </nav> -->
+
+    <nav class="nav nav_right">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            id="binds"
+            >Параметры привязки</a
+          >
+        </li>
+        <!-- <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Рабочие параметры</a
+          >
+        </li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Обнуление параметров</a
+          >
+        </li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            >Системные параметры</a
+          >
+        </li> -->
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            id="appSettings"
+            >Параметры подключения</a
+          >
+        </li>
+        <li class="nav__item">
+          <a
+            href="#"
+            class="nav__link"
+            id="closeApp"
+            >Выход</a
+          >
+        </li>
+        <li class="nav__item">
+          <button
+            class="header__button header__button_small header__button_animate"
+            aria-label="Animate">
+            Animate
+          </button>
+        </li>
       </ul>
     </nav>
+    
     <div class="main">
       <section class="circles">
         <div class="gauge circles__circle circles__circle_left-top">
@@ -58,6 +176,7 @@
           <canvas id="circleGaugeRightBottom"></canvas>
         </div>
       </section>
+
       <section class="linears">
         <div class="gauge linears__lenear"><canvas id="linearGauge1"></canvas></div>
         <div class="gauge linears__lenear"><canvas id="linearGauge2"></canvas></div>
@@ -68,157 +187,503 @@
         <div class="gauge linears__lenear"><canvas id="linearGauge7"></canvas></div>
         <div class="gauge linears__lenear"><canvas id="linearGauge8"></canvas></div>
       </section>
-      <div class="popup">
+
+      <div class="popup popup_params-setting">
         <div class="popup__container">
-          <h2 class="popup__header">Выберите и настройте параметр</h2>
-          <form
-            class="popup__form"
-            id="setParam"
-            name="popupForm"
-            autocomplete="on"
-            validate>
-            <fieldset class="popup__fieldset">
-              <div class="popup__group">
-                <label
-                  class="popup__label"
-                  for="param"
-                  >Параметр</label
-                >
-                <select
-                  class="popup__select popup__data"
-                  name="params"
-                  id="params"
-                  size="1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                </select>
-                <label
-                  class="popup__label"
-                  for="units"
-                  >Единицы измерения</label
-                >
-                <select
-                  class="popup__select popup__data"
-                  name="units"
-                  id="units"
-                  size="1">
-                  <option>кН</option>
-                  <option>Тс</option>
-                  <option>кгс</option>
-                </select>
-                <label
-                  class="popup__label"
-                  for="format"
-                  >Формат отображения</label
-                >
-                <select
-                  class="popup__select popup__data"
-                  name="format"
-                  id="format"
-                  size="1">
-                  <option>0.0</option>
-                  <option>0.00</option>
-                  <option>0.000</option>
-                </select>
-              </div>
-              <div class="popup__group">
-                <label
-                  class="popup__label"
-                  for="scale-max"
-                  >Максимум шкалы</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="scale-max"
-                  name="scaleMax"
-                  type="number"
-                  placeholder="Максимум шкалы" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-
-                <label
-                  class="popup__label"
-                  for="param-max"
-                  >Максимум параметра</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="param-max"
-                  name="paramMax"
-                  type="number"
-                  placeholder="Максимум параметра" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-
-                <label
-                  class="popup__label"
-                  for="param-min"
-                  >Минимум параметра</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="param-min"
-                  name="paramMin"
-                  type="number"
-                  placeholder="Минимум параметра" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-
-                <label
-                  class="popup__label"
-                  for="scale-min"
-                  >Минимум шкалы</label
-                >
-                <input
-                  class="popup__input popup__data"
-                  id="scale-min"
-                  name="scaleMin"
-                  type="number"
-                  placeholder="Минимум шкалы" />
-                <!-- <span
-                id="name-card-error"
-                class="popup__input-error"></span> -->
-              </div>
-              <div class="popup__group">
-                <button
-                  id="submit"
-                  class="popup__button popup__button_disable"
-                  type="submit">
-                  Сохранить
-                </button>
-                <button
-                  id="reset"
-                  class="popup__button popup__button_disable"
-                  type="reset">
-                  Отменить
-                </button>
-                <button
-                  id="keyboard"
-                  class="popup__button popup__button_disable"
-                  type="button">
-                  Клавиатура
-                </button>
-              </div>
-            </fieldset>
-          </form>
-          <div class="popup__keyboard">
-            <input class="input" />
-            <div class="simple-keyboard"></div>
+          <div class="popup__form-container">
+            <h2 class="popup__header">Выберите и настройте параметр</h2>
+            <form
+              class="popup__form"
+              id="setParam"
+              name="popupForm"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group">
+                  <div class="popup__input-section popup__input-section_column">
+                    <label
+                      class="popup__label popup__label_parameter"
+                      for="param"
+                      >Параметр</label
+                    >
+                    <select
+                      class="popup__select popup__select_params popup_data"
+                      name="params"
+                      id="params"
+                      size="7">
+                      <option>
+                        012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890012345678900123456789001234567890
+                      </option>
+                      <option value="title">title</option>
+                      <option value="Уровень">Уровень</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="popup__group">
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="units"
+                      >Ед. измерения</label
+                    >
+                    <select
+                      class="popup__select popup_data"
+                      name="units"
+                      id="units"
+                      size="1">
+                      <option value="кН">кН</option>
+                      <option value="Тс">Тс</option>
+                      <option value="кгс">кгс</option>
+                      <option value="units">units</option>
+                      <option value="л/с">л/с</option>
+                    </select>
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="format"
+                      >Формат отобр.</label
+                    >
+                    <select
+                      class="popup__select popup_data"
+                      name="format"
+                      id="format"
+                      size="1">
+                      <option value="1">0.0</option>
+                      <option value="2">0.00</option>
+                      <option value="3">0.000</option>
+                    </select>
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="scale-max"
+                      >Макс. шкалы</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="scale-max"
+                      name="scaleMax"
+                      type="number"
+                      placeholder="Макс. шкалы" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="param-max"
+                      >Макс. параметра</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="param-max"
+                      name="paramMax"
+                      type="number"
+                      placeholder="Макс. параметра" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="param-min"
+                      >Мин. параметра</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="param-min"
+                      name="paramMin"
+                      type="number"
+                      placeholder="Мин. параметра" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="scale-min"
+                      >Мин. шкалы</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="scale-min"
+                      name="scaleMin"
+                      type="number"
+                      placeholder="Мин. шкалы" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
           </div>
-
+          <!-- <div class="popup__keyboard">
+            <div class="simple-keyboard"></div>
+          </div> -->
           <button
             class="popup__form-closer"
             type="button"
             aria-label="Закрыть форму"></button>
         </div>
+      </div>
+
+      <div class="popup popup_work-code-setting">
+        <div class="popup__container">
+          <div class="popup__form-container">
+            <h2 class="popup__header">Введите код работ</h2>
+            <form
+              class="popup__form"
+              id="setWorkCode"
+              name="popupWorkCodeForm"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group popup__group_adaptive-width">
+                  <div class="popup__input-section popup__input-section_column">
+                    <label
+                      class="popup__label popup__label_parameter"
+                      for="workCode"
+                      >Код работ</label
+                    >
+                    <select
+                      class="popup__select popup__select_params popup_data"
+                      name="workCode"
+                      id="workCode"
+                      size="5">
+                      <option value="1">Код работ 01 Код работ 01</option>
+                      <option value="2">Код работ 02</option>
+                      <option value="3">Код работ 03</option>
+                      <option value="4">Код работ 04</option>
+                      <option value="5">Код работ 05</option>
+                      <option value="6">Код работ 06</option>
+                      <option value="7">Код работ 07</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <button
+            class="popup__form-closer"
+            type="button"
+            aria-label="Закрыть форму"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_bit-hole">
+        <div class="popup__container">
+          <div class="popup__form-container">
+            <h2 class="popup__header popup__header_medium-width">
+              Установите положение долота и&nbsp;глубину забоя
+            </h2>
+            <form
+              class="popup__form"
+              id="setBitHole"
+              name="popupBitHoleForm"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group popup__group_fix-width">
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="bit-position"
+                      >Полож. долота</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="bit-position"
+                      name="bitPosition"
+                      type="number"
+                      placeholder="Положение долота" />
+                    <!-- <span
+                  id="name-card-error"
+                  class="popup__input-error"></span> -->
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="bottom-of-hole"
+                      >Глубина забоя</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="bottom-of-hole"
+                      name="bottomOfHole"
+                      type="number"
+                      placeholder="Глубина забоя" />
+                  </div>
+                  <span
+                    id="name-card-error"
+                    class="popup__error"></span>
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <button
+            class="popup__form-closer"
+            type="button"
+            aria-label="Закрыть форму"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_binds">
+        <div class="popup__container">
+          <div class="popup__form-container">
+            <h2 class="popup__header popup__header_medium-width">Параметры привязки</h2>
+            <form
+              class="popup__form"
+              id="setBinds"
+              name="popupBinds"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group popup__group_fix-width">
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="well"
+                      >Скважина</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="well"
+                      name="well"
+                      type="text"
+                      placeholder="Скважина" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="pad"
+                      >Куст</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="pad"
+                      name="pad"
+                      type="text"
+                      placeholder="Куст" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="field"
+                      >Месторождение</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="field"
+                      name="field"
+                      type="text"
+                      placeholder="Месторождение" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="crew"
+                      >Бригада</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="crew"
+                      name="crew"
+                      type="text"
+                      placeholder="Бригада" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="shop"
+                      >Цех</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="shop"
+                      name="shop"
+                      type="text"
+                      placeholder="Цех" />
+                  </div>
+                  <div class="popup__input-section">
+                    <label
+                      class="popup__label"
+                      for="rig"
+                      >СПУ</label
+                    >
+                    <input
+                      class="popup__input popup_data"
+                      id="rig"
+                      name="rig"
+                      type="text"
+                      placeholder="СПУ" />
+                  </div>
+
+                  <span
+                    id="name-card-error"
+                    class="popup__error"></span>
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <button
+            class="popup__form-closer"
+            type="button"
+            aria-label="Закрыть форму"></button>
+        </div>
+      </div>
+
+      <div class="popup popup_app-settings">
+        <div class="popup__container">
+          <div class="popup__form-container">
+            <h2 class="popup__header popup__header_medium-width">Настройки приложения</h2>
+            <form
+              class="popup__form"
+              id="settings"
+              name="popupSettings"
+              autocomplete="on"
+              validate>
+              <fieldset class="popup__fieldset">
+                <div class="popup__group popup__group_fix-width">
+                  <div class="popup__input-section popup__input-section_column">
+                    <label
+                      class="popup__label popup__label_parameter"
+                      for="ip"
+                      >IP адрес МУ</label
+                    >
+                    <input
+                      class="popup__input popup__input_width_wide popup_data"
+                      id="ip"
+                      name="ip"
+                      type="text"
+                      placeholder="IP адрес МУ" />
+                    <span
+                      id="name-card-error"
+                      class="popup__error"></span>
+                  </div>
+                  <!-- <button
+                    id="closeApp"
+                    class="popup__button"
+                    type="button">
+                    Выйти
+                  </button> -->
+                </div>
+                <div class="popup__group">
+                  <button
+                    id="submit"
+                    class="popup__button"
+                    type="submit">
+                    Сохранить
+                  </button>
+                  <button
+                    id="reset"
+                    class="popup__button"
+                    type="reset">
+                    Отменить
+                  </button>
+                  <button
+                    id="keyboard"
+                    class="popup__button"
+                    type="button">
+                    Клавиатура
+                  </button>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <button
+            class="popup__form-closer"
+            type="button"
+            aria-label="Закрыть форму"></button>
+        </div>
+      </div>
+
+      <div class="keyboard">
+        <div class="simple-keyboard"></div>
       </div>
     </div>
 

@@ -15,5 +15,6 @@
 
 .header__button:hover, .header__button:focus {
   cursor: pointer;
-  opacity: 0.7;
+  opacity: 1;
+  border-color: #FFF;
 }
